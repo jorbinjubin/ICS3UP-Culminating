@@ -1,3 +1,8 @@
 ICS3U Culminating Assignment
-[Add info]
-[MIT LICENCE]
+
+Bicycle Safety Game
+
+Made by Justin Jiang and Tsz Fei Wang
+
+HOW TO RUN GAME
+Open "Game.java" in Ready To Program and run.
