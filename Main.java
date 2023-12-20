@@ -4,8 +4,14 @@ import hsa.Message;
 import java.util.*;
 
 public class Main {
+	Console c;
+	public Main() {
+		Console c = new Console("Bicycle Safety");
+	}
+	
 	public static void main (String[] args){
-    	RoadSigns r = new RoadSigns();
+    	
+		Main m = new Main();
     	r.splashScreen();
     	while (true) {
 		r.mainMenu();
