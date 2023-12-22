@@ -11,7 +11,7 @@ Finally, there is a game where you have to use what you have learned to reach th
 This game is not legal/official information, however we, the authors, have tried our best to make everything as accurate to real life as possible.
 That said, you do not get 3 lives after getting run over by a car.
 
-## HOW TO RUN GAME
+# HOW TO RUN GAME
 Open "Game.java" in Ready To Program IDE and click `Run` or use the shortcut `Ctrl + R` to run.
 # Where do I find Ready to Program?
 [Download](http://compsci.ca/holtsoft/) the Ready 1.7.1 executable and run it.
