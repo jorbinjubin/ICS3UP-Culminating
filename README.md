@@ -14,7 +14,7 @@ That said, you do not get 3 lives after getting run over by a car.
 ## HOW TO RUN GAME
 Open "Game.java" in Ready To Program IDE and click `Run` or use the shortcut `Ctrl + R` to run.
 # Where do I find Ready to Program?
-[Download][http://compsci.ca/holtsoft/] the Ready 1.7.1 executable and run it.
+[Download](http://compsci.ca/holtsoft/) the Ready 1.7.1 executable and run it.
 
 ## LINUX INSTRUCIONS
 1. Download and install the Wine Emulator from your package manager of choice (Software center on Ubuntu is outdated)
