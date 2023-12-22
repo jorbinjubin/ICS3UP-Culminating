@@ -15,6 +15,7 @@ That said, you do not get 3 lives after getting run over by a car.
 Open "Game.java" in Ready To Program IDE and click `Run` or use the shortcut `Ctrl + R` to run.
 # Where do I find Ready to Program?
 http://compsci.ca/holtsoft/
+
 Download the Ready 1.7.1 executable and run it.
 
 ## LINUX INSTRUCIONS
