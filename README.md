@@ -18,14 +18,14 @@ Open "Game.java" in Ready To Program IDE and click `Run` or use the shortcut `Ct
 
 ## LINUX INSTRUCIONS
 1. Download and install the Wine Emulator from your package manager of choice (pacman, apt, yum, rpm, etc...) but not flatpak or snap because it's outdated
-2. Download the Ready to Program .exe file and move it to ~/.wine/drive_c/windows/'Program Files x86'
+2. Download the Ready to Program .exe file and move it to `~/.wine/drive_c/windows/'Program Files x86'`
 3. Run `wine ready171_install.exe`
 4. Follow instructions on screen
 5. When it asks you for an install location, make sure to put it somewhere in the .wine folder.
 6. Run `wine ready.exe`
 7. Note: USB devices are stored in `E:`. Your physical hard drive is in `Z:`
 ### Optional
-For the monospaced fonts and console sizing to work properly:
+For the `monospaced fonts` and console sizing to work properly:
 1. Boot up a Windows VM (or go to a windows install) and navigate to `C:\Windows\Fonts`
 2. Archive and move it to your Linux install however you like
 3. Extract the archive to `~/.wine/drive_c/windows/Fonts/` (Thanks to [Creative0708](https://github.com/Creative0708) for this part)
