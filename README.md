@@ -28,7 +28,7 @@ Open "Game.java" in Ready To Program IDE and click `Run` or use the shortcut `Ct
 For the monospaced fonts and console sizing to work properly:
 1. Boot up a Windows VM (or go to a windows install) and navigate to `C:\Windows\Fonts`
 2. Archive and move it to your Linux install however you like
-3. Extract the archive to `~/.wine/drive_c/windows/Fonts/` (Thanks to Creative0708 for this part)
+3. Extract the archive to `~/.wine/drive_c/windows/Fonts/` (Thanks to [Creative0708](https://github.com/Creative0708) for this part)
 The font should be working.
    
 
