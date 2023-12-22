@@ -18,7 +18,7 @@ Open "Game.java" in Ready To Program IDE and click `Run` or use the shortcut `Ct
 
 ## LINUX INSTRUCIONS
 1. Download and install the Wine Emulator from your package manager of choice (Software center on Ubuntu is outdated)
-2. Download the Ready to Program .exe file and move it to ~/.wine/drive_c/Program\Files\x86
+2. Download the Ready to Program .exe file and move it to ~/.wine/drive_c/windows/'Program Files x86'
 3. Run `wine ready171_install.exe`
 4. Follow instructions on screen
 5. When it asks you for an install location, make sure to put it somewhere in the .wine folder.
