@@ -19,6 +19,7 @@ public class Splash{
             stripes = stripes.getScaledInstance(1024, 768, stripes.SCALE_DEFAULT);
             title = title.getScaledInstance(605, 354, title.SCALE_DEFAULT);
             cycles = cycles.getScaledInstance(1020, 200, stripes.SCALE_DEFAULT);
+            newScreen = newScreen.getScaledInstance(1024, 768, newScreen.SCALE_DEFAULT);
             
             c.drawImage(stripes, 0, 0, null);
             c.drawImage(title, 210, 40, null);
@@ -28,6 +29,8 @@ public class Splash{
                 c.drawImage(title, 210, 40, null);
                 try{Thread.sleep(50); } catch(Exception e) {} 
             }
+            
+            c.drawImage(newScreen, 0, 0, null);
         }
         catch (FileNotFoundException fnf) {
             new Message("oh noes","error");
@@ -36,10 +39,7 @@ public class Splash{
             new Message("farty warty", "error");
         }
         
-        c.setColor(Color.white);
-        Font f = new Font("Anonymous Pro", 0, 32); 
-        c.setFont(f);
-        c.drawString("Press any key to continue", 100, 400); 
+        c.getChar();
     }
     public static void main(String[] args) {
         Splash s = new Splash(); 
