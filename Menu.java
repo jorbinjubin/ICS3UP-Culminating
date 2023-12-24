@@ -79,8 +79,6 @@ public class Menu {
 		new Message("File Not Found", "Error");
 	    } catch (IOException ioe) {
 		new Message("Error reading file", "Error");
-	    } catch (NullPointerException npe) {
-		new Message("Thank you for playing this game!", "Thank you!");
 	    }
 	    drawOutline(choice);
 	}
