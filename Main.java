@@ -4,44 +4,51 @@ import hsa.Message;
 import java.util.*;
 
 public class Main {
-    Console c;
-    int menuChoice = 0;
-    public Menu m;
-    public Main() {
-        c = new Console(38,128,"Bicycle Safety"); //1024 by 760
-    }
     
+    int menuChoice = 0;
+    Menu m;
+    Console c;
+    public Main(Menu m, Console con) {
+	this.m = m;
+	this.c = con;
+    }
     public void menu() {
-        m = new Menu(c);
-        m.run();
+	m.run();
     }
     public void instr() {
-        c.clear();
-        c.println("entered instructions");
-        c.getChar();
+	c.clear();
+	c.println("entered instructions");
+	c.getChar();
     }
     public void play() {
-        c.clear();
-        c.println("entered play");
-        c.getChar();
+	c.clear();
+	c.println("entered play");
+	c.getChar();
     }
     public void lb() {
-        c.clear();
-        c.println("entered leaderboard");
-        c.getChar();
+	c.clear();
+	c.println("entered leaderboard");
+	c.getChar();
     }
     
     public static void main(String[] args) {
-        Main z = new Main();
-        while(true) {
-            z.menu();
-            if(Menu.hasChosen) {
-                if(Menu.choice == 0) z.instr();
-                else if(Menu.choice == 1) z.play();
-                else if(Menu.choice == 2) z.lb();
-                //exit is covered in menu();
-            }
-            Menu.hasChosen = false;
-        }
+	Console c = new Console(38,128,"Bicycle Safety"); //1024 by 760;
+	Menu m = new Menu(c);
+	Main z = new Main(m, c);
+	
+	while(true) {
+	    z.menu();
+	    if(m.getHasChosen()) {
+		if(m.getChoice() == 0) z.instr();
+		else if(m.getChoice() == 1) z.play();
+		else if(m.getChoice() == 2) z.lb();
+		else if (m.getChoice() == 3) break;
+	    }
+	    m.setHasChosen(false);
+	}
+	c.clear();
+	c.println("goodbye");
+	c.getChar();
+	z.c.close();
     }        
 }
