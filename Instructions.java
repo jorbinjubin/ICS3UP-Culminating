@@ -1,40 +1,80 @@
-import hsa.Console; // or import hsa.*;
-import hsa.Message;
 import java.awt.*;
-import sun.audio.*;
-import java.io.*;
+import hsa.*;
+import java.io.*; 
+import java.awt.image.*;
+import javax.imageio.*;
 import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
 
 public class Instructions {
-    AudioStream as;
-    int choice = 0;
-    private Console c;
-
-    public Instructions(Console con) {
+    Console c;     
+    public Instructions (Console con) {
         c = con;
     }
-
-    public void delay() {
-        try {
-            Thread.sleep(220);
-        } catch (Exception e) {}
-    }
-    public void instr() {
-        boolean exit = false;
-        try {
-            BufferedImage menu_bg = ImageIO.read(new File("menu.png"));
-            c.drawImage(menu_bg, 0, 0, null);
-        } catch (FileNotFoundException fnf) {
-            new Message("File Not Found", "Error");
-        } catch (IOException ioe) {
-            new Message("Error reading file", "Error");
-        } catch (Exception e) {
-            new Message("Fatal error", "Error");
+    
+    public void instruct1() {
+        try { 
+            BufferedImage instruct = ImageIO.read (new File("instruct.jpg"));
+            char ch; 
+            String t; 
+            
+            Font f = new Font("Arial", 1, 54); 
+            Color pink = new Color(255,180,221); 
+            c.setFont(f); 
+            c.setColor(Color.black); 
+            
+            c.drawImage(instruct, 0, 0, null);
+            ch = c.getChar(); 
+            ch = Character.toUpperCase(ch);
+            while(ch == 'W' || ch == 'A' || ch == 'S' || ch == 'D') {
+                t = ch + ""; 
+                c.setColor(Color.black); 
+                c.drawString(t, 140, 560); 
+                
+                ch = c.getChar(); 
+                ch = Character.toUpperCase(ch);
+                
+                c.setColor(pink); 
+                c.fillRect(135, 520, 60, 60); 
+            }
         }
-        //while(
+        catch (FileNotFoundException fnf) {
+            new Message("File Not Found","error");
+        }
+        catch(IOException ioe) {
+            new Message("Error reading file", "error");
+        }
+    }
+    
+    public void instruct2() {
+        try { 
+            BufferedImage instruct2 = ImageIO.read (new File("learning.jpg"));
+            c.drawImage(instruct2, 0, 0, null);   
+        }
+        catch (FileNotFoundException fnf) {
+            new Message("File Not Found","error");
+        }
+        catch(IOException ioe) {
+            new Message("Error reading file", "error");
+        }
+        c.getChar();
+    }
+    
+    public void instruct3() {
+        try { 
+            BufferedImage instruct3 = ImageIO.read (new File("testing.jpg"));
+            c.drawImage(instruct3, 0, 0, null);   
+        }
+        catch (FileNotFoundException fnf) {
+            new Message("File Not Found","error");
+        }
+        catch(IOException ioe) {
+            new Message("Error reading file", "error");
+        }
+        c.getChar();
     }
     public void run() {
-        
+        instruct1();
+        instruct2();
+        instruct3();
     }
 }
