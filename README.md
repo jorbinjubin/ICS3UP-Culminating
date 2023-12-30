@@ -2,7 +2,7 @@
 
 ## Bicycle Safety Game
 
-Made by Justin Jiang and Tsz Fei Wang
+Made by Justin Jiang and Tsz Fei Wang.
 The purpose of this game is to teach the player the basics of bicycle safety. 
 It has a learning portion where the game teaches the player in flashcard style what each symbol/safety item does.
 Then, there is a maze in which the user has to collect all the symbols and answer questions about them.
