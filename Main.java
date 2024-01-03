@@ -30,6 +30,10 @@ public class Main {
         Instructions i = new Instructions(c); 
         i.run();
     }
+    public void maze() {
+        Maze m = new Maze(c); 
+        m.run();
+    }
 
     public void play() {
         c.clear();
@@ -52,7 +56,9 @@ public class Main {
             z.menu();
             if(m.getHasChosen()) {
                 if(m.getChoice() == 0) z.instr();
-                 else if(m.getChoice() == 1) z.play();
+                 else if(m.getChoice() == 1) { 
+                    z.maze();
+                 }
                  else if(m.getChoice() == 2) z.lb();
                  else if (m.getChoice() == 3) break;
             }
@@ -62,5 +68,6 @@ public class Main {
         c.println("goodbye");
         c.getChar();
         z.c.close();
+        
     }        
 }
