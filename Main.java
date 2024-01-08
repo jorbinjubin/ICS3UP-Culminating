@@ -18,8 +18,9 @@ public class Main {
         this.c = con;
     }
     
-    public void menu() {
-        m.run();
+    public void menu(int x) {
+        if(x == 1) m.menuSelect();
+        else if(x==2) m.menu2Select();
     }
     
     public void splash() {
@@ -53,11 +54,17 @@ public class Main {
         Main z = new Main(m, c);
         z.splash();
         while(true) {
-            z.menu();
+            z.menu(1);
             if(m.getHasChosen()) {
                 if(m.getChoice() == 0) z.instr();
                  else if(m.getChoice() == 1) { 
-                    z.maze();
+                    z.menu(2);
+                    if(m.getHasChosen()) {
+                        if(m.getChoice() == 0) z.maze();  
+                        else if(m.getChoice() == 1) z.play(); 
+                        else if(m.getChoice() == 2) continue; 
+                        else if(m.getChoice() == 3) break;
+                    }
                  }
                  else if(m.getChoice() == 2) z.lb();
                  else if (m.getChoice() == 3) break;
