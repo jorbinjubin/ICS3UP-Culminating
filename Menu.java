@@ -83,7 +83,50 @@ public class Menu {
             drawOutline(choice);
         }
     }
-    public void run() {
-        menuSelect();
+    
+    public void menu2Select() {
+        hasChosen = false;
+        while (!hasChosen) {
+            if (c.isCharAvail()) {
+                switch (c.getChar()) {
+                case 'j':
+                case 's':
+                    if (choice < 3) {
+                        choice++;
+                        try {
+                            as = new AudioStream(new FileInputStream("button.wav"));
+                        } catch (Exception e) {}
+                        AudioPlayer.player.start(as);
+                    }
+                    break;
+                case 'k':
+                case 'w':
+                    if(choice > 0) {
+                        choice--;
+                        try {
+                            as = new AudioStream(new FileInputStream("button.wav"));
+                        } catch (Exception e) {}
+                        AudioPlayer.player.start(as);
+                    }
+                    break;
+                case '\n':
+                    hasChosen = true;
+                    break;
+                default:
+                    break;
+                }
+            }
+            
+            try {
+                BufferedImage menu2 = ImageIO.read(new File("menu2.jpg"));
+                c.drawImage(menu2, 0, 0, null);
+            } catch (FileNotFoundException fnf) {
+                new Message("File Not Found", "Error");
+            } catch (IOException ioe) {
+                new Message("Error reading file", "Error");
+            }
+            drawOutline(choice);
+        }
     }
+   
 }
