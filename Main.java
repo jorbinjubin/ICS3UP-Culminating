@@ -53,14 +53,15 @@ public class Main {
 	Console c = new Console(38,128,"Bicycle Safety"); //1024 by 760;
 	Menu m = new Menu(c);
 	Main z = new Main(m, c);
-	z.splash();
+	//z.splash();
 	while(true) {
 	    z.menu(1);
-	    if(m.getHasChosen()) {
+	    if(m.getHasChosen1()) {
 		if(m.getChoice() == 0) z.instr();
 		 else if(m.getChoice() == 1) { 
 		    z.menu(2);
-		    if(m.getHasChosen()) {
+		    m.setHasChosen1(false);
+		    if(m.getHasChosen2()) {
 			if(m.getChoice() == 0) z.maze();  
 			else if(m.getChoice() == 1) z.play(); 
 			else if(m.getChoice() == 2) continue; 
@@ -70,7 +71,7 @@ public class Main {
 		 else if(m.getChoice() == 2) z.lb();
 		 else if (m.getChoice() == 3) break;
 	    }
-	    m.setHasChosen(false);
+	    m.setHasChosen1(false);
 	}
 	c.clear();
 	c.println("goodbye");

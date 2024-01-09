@@ -26,7 +26,7 @@ public class Game {
     public void drawBike() {
 	try{
 	    Image cycleRight = ImageIO.read(new File("cycleRight.jpg"));
-	    cycleRight = cycleRight.getScaledInstance(80, 40, cycleRight.SCALE_DEFAULT);
+	    cycleRight = cycleRight.getScaledInstance(100, 50, cycleRight.SCALE_DEFAULT);
 	    c.drawImage(cycleRight, 500, 300, null);
 	}catch(IOException ioe) {}
     }      
@@ -34,20 +34,26 @@ public class Game {
     public void anim() {
 	int barrelX = 1024;
 	char ch = ' ';
-	int delta = 0;
+	double delta = 0;
 	while(true) {
 	    if(c.isCharAvail()) {
 		ch = c.getChar();
+	    }
+	    else {
+		tkit.goTowards(delta, 0, 0.3, 0.5);
+		/* 
+		Not implemented yet, need to steal this from godot
+		*/
 	    }
 	    if(ch == 'o') break;
 	    if(ch == 'd') delta+=3;
 	    if(ch == 'a') delta-=3;
 	    if(delta > 10) delta = 10;
-	    if(delta < 0) delta = 0;
+	    if(delta < -10) delta = -10;
 	    barrelX -= delta;
 	    drawRoad();
 	    drawBike();
-	    barrel(barrelX);
+	    barrel((int)barrelX);
 	    if(barrelX < 000) {
 		break;
 	    }
