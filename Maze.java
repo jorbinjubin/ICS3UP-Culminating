@@ -29,7 +29,152 @@ public class Maze {
             
             c.setColor(orange);
             
+            //first symbol 
+            for(int i = 0; i < 40; i++) {
+                c.drawImage(cycleRight, i, 440, null);
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(40, 440, 85, 45);
+            for(int i = 0; i < 120; i++) {
+                c.drawImage(cycleUp, 70, 440-i, null);
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(70, 320, 45, 85);
             
+            //second symbol
+            for(int i = 0; i < 110; i++) {
+                c.drawImage(cycleRight, 70 + i, 320, null); 
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(170, 320, 100, 45);
+            for(int i = 0; i < 160; i++) {
+                c.drawImage(cycleDown, 200, 320+i, null); 
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(180, 490, 75, 105);
+            
+            //third symbol
+            for(int i = 0; i < 280; i++) {
+                c.drawImage(cycleUp, 200, 480-i, null);
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(190, 190, 65, 95);
+            for(int i = 0; i < 80; i++) {
+                c.drawImage(cycleLeft, 190-i, 200, null); 
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(60, 180, 140, 65);
+            
+            //fourth symbol 
+            for(int i = 0; i < 110; i++) {
+                c.drawImage(cycleUp, 70, 180-i, null);
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(70, 70, 55, 85);
+            for(int i = 0; i < 330; i++) {
+                c.drawImage(cycleRight, 80+i, 70, null);
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(410, 70, 95, 45);
+            for(int i = 0; i < 110; i++) {
+                c.drawImage(cycleDown, 435, 70+i, null);
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(430, 180, 55, 85);
+            for(int i = 0; i < 270; i++) {
+                c.drawImage(cycleRight, 425+i, 200, null);
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(700, 200, 85, 45); 
+            for(int i = 0; i < 120; i++) {
+                c.drawImage(cycleUp, 710, 180-i, null);
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(700, 60, 45, 85);
+            for(int i = 0; i < 60; i++) {
+                c.drawImage(cycleLeft, 700-i, 60, null);
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(640, 40, 45, 85);
+            
+            //5th symbol 
+            for(int i = 0; i < 220; i++) {
+                c.drawImage(cycleRight, 640+i, 60, null);
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(860, 60, 85, 45);
+            for(int i = 0; i < 60; i++) {
+                c.drawImage(cycleDown, 890, 60+i, null);
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(860, 120, 85, 45);
+            
+            //goes in reverse
+            //5th symbol 
+            for(int i = 0; i < 60; i++) {
+                c.drawImage(cycleUp, 890, 120-i, null);
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(890, 60, 45, 85);
+            for(int i = 0; i < 160; i++) {
+                c.drawImage(cycleLeft, 860-i, 60, null);
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(700, 60, 85, 45);
+            
+            //fourth symbol 
+            for(int i = 0; i < 120; i++) {
+                c.drawImage(cycleDown, 710, 60+i, null);
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(700, 180, 45, 85);
+            for(int i = 0; i < 270; i++) {
+                c.drawImage(cycleLeft, 695-i, 200, null);
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(420, 200, 85, 45); 
+            for(int i = 0; i < 110; i++) {
+                c.drawImage(cycleUp, 435, 180-i, null);
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(430, 70, 55, 85);
+            for(int i = 0; i < 330; i++) {
+                c.drawImage(cycleLeft, 410-i, 70, null);
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(80, 70, 95, 45);
+            for(int i = 0; i < 110; i++) {
+                c.drawImage(cycleDown, 70, 70+i, null);
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(70, 180, 55, 85);
+            
+            //third symbol
+            for(int i = 0; i < 80; i++) {
+                c.drawImage(cycleRight, 110+i, 200, null); 
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(190, 180, 82, 65);
+            for(int i = 0; i < 60; i++) {
+                c.drawImage(cycleDown, 200, 200+i, null);
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(190, 260, 82, 65);
+            
+            //second symbol
+            for(int i = 0; i < 110; i++) {
+                c.drawImage(cycleLeft, 180-i, 320, null); 
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(60, 320, 85, 45);
+            
+            
+            //first symbol
+            for(int i = 0; i < 120; i++) {
+                c.drawImage(cycleDown, 70, 320+i, null);
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(60, 440, 42, 85);
             
             //second part 
             //sixth symbol 
