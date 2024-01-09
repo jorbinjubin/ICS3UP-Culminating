@@ -37,7 +37,7 @@ public class Maze {
                 c.drawImage(cycleDown, 70, 440+i, null);
                 try{Thread.sleep(10); } catch(Exception e) {}
             }
-            c.fillRect(70, 610, 42, 85); 
+            c.fillRect(45, 610, 62, 115); 
             
             //seventh symbol 
             for(int i = 0; i < 240; i++) {
@@ -49,32 +49,56 @@ public class Maze {
                 c.drawImage(cycleUp, 350, 640-i, null);
                 try{Thread.sleep(10); } catch(Exception e) {}
             }
-            c.fillRect(350, 350, 65, 105);
+            c.fillRect(340, 320, 75, 135);
             
             //eighth symbol 
-            for(int i = 0; i < 80; i++) {
-                c.drawImage(cycleRight, 370+i, 350, null); 
+            for(int i = 0; i < 40; i++) {
+                c.drawImage(cycleRight, 450+i, 350, null); 
                 try{Thread.sleep(10); } catch(Exception e) {}
             }
-            c.fillRect(450, 350, 85, 45); 
+            c.fillRect(490, 350, 85, 45); 
             for(int i = 0; i < 220; i++) {
-                c.drawImage(cycleDown, 490, 350+i, null); 
+                c.drawImage(cycleDown, 500, 350+i, null); 
                 try{Thread.sleep(10); } catch(Exception e) {}
             }
-            c.fillRect(490, 550, 45, 85);
+            c.fillRect(470, 570, 85, 150);
             
             
             //ninth symbol
-            for(int i = 0; i < 330; i++) {
-                c.drawImage(cycleRight, 490 + i, 550, null);
+            for(int i = 0; i < 280; i++) {
+                c.drawImage(cycleRight, 600 + i, 650, null);
                 try{Thread.sleep(10); } catch(Exception e) {}
             }
-            c.fillRect(720, 550, 85, 45); 
+            c.fillRect(880, 650, 85, 45); 
             for(int i = 0; i < 60; i++) {
-                c.drawImage(cycleUp, 720, 550 - i, null); 
+                c.drawImage(cycleUp, 890, 550 - i, null); 
                 try{Thread.sleep(10); } catch(Exception e) {}
             }
-            c.fillRect(710, 680, 50, 90);
+            c.fillRect(880, 480, 80, 120);
+            
+            //tenth symbol 
+            for(int i = 0; i < 130; i++) {
+                c.drawImage(cycleDown, 890, 490 + i, null); 
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(890, 620, 45, 85);
+            for(int i = 0; i < 120; i++) {
+                c.drawImage(cycleLeft, 890-i, 650, null); 
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(760, 650, 85, 45);
+            for(int i = 0; i < 230; i++) {
+                c.drawImage(cycleUp, 740, 640-i, null); 
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            c.fillRect(720, 320, 85, 175);
+            
+            //exit 
+            for(int i = 0; i < 180; i++) {
+                c.drawImage(cycleRight, 830+i, 350, null); 
+                try{Thread.sleep(10); } catch(Exception e) {}
+            }
+            
         }
         catch (FileNotFoundException fnf) {
             new Message("File Not Found","error");
