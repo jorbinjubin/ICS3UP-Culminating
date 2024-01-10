@@ -14,6 +14,17 @@ public class Instructions {
     public void instruct1() {
         try { 
             BufferedImage instruct = ImageIO.read (new File("instruct.jpg"));
+            Image WASD = ImageIO.read(new File("WASD.jpg"));
+            Image W = ImageIO.read(new File("W pressed WASD.jpg"));
+            Image A = ImageIO.read(new File("A pressed WASD.jpg"));
+            Image S = ImageIO.read(new File("S pressed WASD.jpg"));
+            Image D = ImageIO.read(new File("D pressed WASD.jpg"));
+            W = W.getScaledInstance(170, 128, W.SCALE_DEFAULT);
+            A = A.getScaledInstance(170, 128, W.SCALE_DEFAULT);
+            S = S.getScaledInstance(170, 128, W.SCALE_DEFAULT);
+            D = D.getScaledInstance(170, 128, W.SCALE_DEFAULT);
+            WASD = WASD.getScaledInstance(170, 128, WASD.SCALE_DEFAULT);
+            
             char ch; 
             String t; 
             
@@ -23,18 +34,18 @@ public class Instructions {
             c.setColor(Color.black); 
             
             c.drawImage(instruct, 0, 0, null);
+            c.drawImage(WASD, 100, 450, null);
             ch = c.getChar(); 
             ch = Character.toUpperCase(ch);
+            
             while(ch == 'W' || ch == 'A' || ch == 'S' || ch == 'D') {
-                t = ch + ""; 
-                c.setColor(Color.black); 
-                c.drawString(t, 140, 560); 
-                
+                c.drawImage(WASD, 100, 450, null);
+                if(ch=='W') c.drawImage(W, 100, 450, null);
+                if(ch == 'A') c.drawImage(A, 100, 450, null);
+                if(ch == 'S') c.drawImage(S, 100, 450, null);
+                if(ch == 'D') c.drawImage(D, 100, 450, null);
                 ch = c.getChar(); 
-                ch = Character.toUpperCase(ch);
-                
-                c.setColor(pink); 
-                c.fillRect(135, 520, 60, 60); 
+                ch = Character.toUpperCase(ch); 
             }
         }
         catch (FileNotFoundException fnf) {
