@@ -32,7 +32,7 @@ public class Leaderboard {
             
             for(int i = 0; i < 10; i++) {
                 if(score > scores[i]) {
-                    for(int j = 10; j > i; j--) {
+                    for(int j = 9; j > i; j--) {
                         scores[j] = scores[j-1];
                         names[j] = names[j-1];
                     }
