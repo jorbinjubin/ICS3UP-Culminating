@@ -44,6 +44,8 @@ public class Instructions {
                 if(ch == 'A') c.drawImage(A, 100, 450, null);
                 if(ch == 'S') c.drawImage(S, 100, 450, null);
                 if(ch == 'D') c.drawImage(D, 100, 450, null);
+                try { Thread.sleep(100); } catch(Exception e) {}
+                c.drawImage(WASD, 100, 450, null);
                 ch = c.getChar(); 
                 ch = Character.toUpperCase(ch); 
             }
