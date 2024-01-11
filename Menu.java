@@ -5,13 +5,7 @@ import sun.audio.*;
 import java.io.*;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
-	    /*
-    OK HI FEI
-    I FOUND THE MENU CRASHING ISSUE
-    THE SOUND KINDA DOES A FUCKY WUCKY AND JUST FLOODS THE THIHNGY
-    I HAVE NO IDEA WHY
-    ANYWAYS THAT WORKS NOW
-	    */
+
 public class Menu {
     AudioStream as;
     int choice = 0;
