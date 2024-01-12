@@ -41,7 +41,7 @@ public class Maze {
             
             c.setColor(orange);
             
-            //first symbol bike bell
+            //first symbol 
             for(int i = 0; i < 40; i++) {
                 c.drawImage(cycleRight, i, 440, null);
                 try{Thread.sleep(3); } catch(Exception e) {}
@@ -51,12 +51,12 @@ public class Maze {
                 c.drawImage(cycleUp, 70, 440-i, null);
                 try{Thread.sleep(3); } catch(Exception e) {}
             }
+            c.fillRect(70, 320, 45, 85);
             c.drawImage(p11, 0, 0, null);
             c.getChar(); 
             c.drawImage(mazeMap, 0, 0, null); 
-            c.fillRect(70, 320, 45, 95);
             
-            //second symbol helmet
+            //second symbol
             for(int i = 0; i < 110; i++) {
                 c.drawImage(cycleRight, 70 + i, 320, null); 
                 try{Thread.sleep(3); } catch(Exception e) {}
@@ -66,13 +66,13 @@ public class Maze {
                 c.drawImage(cycleDown, 200, 320+i, null); 
                 try{Thread.sleep(3); } catch(Exception e) {}
             }
+            c.fillRect(180, 490, 75, 105);
             c.drawImage(p12, 0, 0, null);
             c.getChar(); 
             c.drawImage(mazeMap, 0, 0, null); 
-            c.fillRect(70, 320, 45, 95);
-            c.fillRect(180, 490, 75, 120);
+            c.fillRect(70, 320, 45, 85);
             
-            //third symbol cycle lane
+            //third symbol
             for(int i = 0; i < 280; i++) {
                 c.drawImage(cycleUp, 200, 480-i, null);
                 try{Thread.sleep(3); } catch(Exception e) {}
@@ -82,14 +82,14 @@ public class Maze {
                 c.drawImage(cycleLeft, 190-i, 200, null); 
                 try{Thread.sleep(3); } catch(Exception e) {}
             }
+            c.fillRect(60, 180, 140, 65);
             c.drawImage(p13, 0, 0, null);
             c.getChar(); 
             c.drawImage(mazeMap, 0, 0, null); 
-            c.fillRect(70, 320, 45, 95);
-            c.fillRect(180, 490, 75, 120);
-            c.fillRect(50, 180, 140, 85);
+            c.fillRect(70, 320, 45, 85);
+            c.fillRect(180, 490, 75, 105);
             
-            //fourth symbol stop sign
+            //fourth symbol 
             for(int i = 0; i < 110; i++) {
                 c.drawImage(cycleUp, 70, 180-i, null);
                 try{Thread.sleep(3); } catch(Exception e) {}
@@ -119,15 +119,15 @@ public class Maze {
                 c.drawImage(cycleLeft, 700-i, 60, null);
                 try{Thread.sleep(3); } catch(Exception e) {}
             }
+            c.fillRect(640, 40, 45, 85);
             c.drawImage(p14, 0, 0, null);
             c.getChar(); 
             c.drawImage(mazeMap, 0, 0, null); 
-            c.fillRect(70, 320, 45, 95);
-            c.fillRect(180, 490, 75, 120);
-            c.fillRect(50, 180, 140, 85);
-            c.fillRect(560, 40, 105, 95);
+            c.fillRect(70, 320, 45, 85);
+            c.fillRect(180, 490, 75, 105);
+            c.fillRect(60, 180, 140, 65);
             
-            //5th symbol no cycle lane
+            //5th symbol 
             for(int i = 0; i < 220; i++) {
                 c.drawImage(cycleRight, 640+i, 60, null);
                 try{Thread.sleep(3); } catch(Exception e) {}
@@ -137,14 +137,14 @@ public class Maze {
                 c.drawImage(cycleDown, 890, 60+i, null);
                 try{Thread.sleep(3); } catch(Exception e) {}
             }
+            c.fillRect(860, 120, 85, 45);
             c.drawImage(p15, 0, 0, null);
             c.getChar(); 
             c.drawImage(mazeMap, 0, 0, null); 
-            c.fillRect(70, 320, 45, 95);
-            c.fillRect(180, 490, 75, 120);
-            c.fillRect(50, 180, 140, 85);
-            c.fillRect(560, 40, 105, 95);
-            c.fillRect(850, 160, 105, 80);
+            c.fillRect(70, 320, 45, 85);
+            c.fillRect(180, 490, 75, 105);
+            c.fillRect(60, 180, 140, 65);
+            c.fillRect(640, 40, 45, 85);
             
             //goes in reverse
             //5th symbol 
@@ -214,22 +214,22 @@ public class Maze {
             c.fillRect(60, 440, 42, 85);
             
             //second part 
-            //sixth symbol lights
+            //sixth symbol 
             for(int i = 0; i < 190; i++) {
                 c.drawImage(cycleDown, 70, 440+i, null);
                 try{Thread.sleep(3); } catch(Exception e) {}
             }
+            c.fillRect(45, 610, 62, 115); 
             c.drawImage(p16, 0, 0, null);
             c.getChar(); 
             c.drawImage(mazeMap, 0, 0, null); 
-            c.fillRect(70, 320, 45, 95);
-            c.fillRect(180, 490, 75, 120);
-            c.fillRect(50, 180, 140, 85);
-            c.fillRect(560, 40, 105, 95);
-            c.fillRect(850, 160, 105, 80);
-            c.fillRect(45, 610, 62, 115); 
+            c.fillRect(70, 320, 45, 85);
+            c.fillRect(180, 490, 75, 105);
+            c.fillRect(60, 180, 140, 65);
+            c.fillRect(640, 40, 45, 85);
+            c.fillRect(860, 120, 85, 45);
             
-            //seventh symbol pediatrician corssing or something
+            //seventh symbol 
             for(int i = 0; i < 240; i++) {
                 c.drawImage(cycleRight, 80+i, 680, null);
                 try{Thread.sleep(3); } catch(Exception e) {}
@@ -239,18 +239,18 @@ public class Maze {
                 c.drawImage(cycleUp, 350, 640-i, null);
                 try{Thread.sleep(3); } catch(Exception e) {}
             }
+            c.fillRect(340, 320, 75, 135);
             c.drawImage(p17, 0, 0, null);
             c.getChar(); 
             c.drawImage(mazeMap, 0, 0, null); 
-            c.fillRect(70, 320, 45, 95);
-            c.fillRect(180, 490, 75, 120);
-            c.fillRect(50, 180, 140, 85);
-            c.fillRect(560, 40, 105, 95);
-            c.fillRect(850, 160, 105, 80);
-            c.fillRect(45, 610, 62, 115);
-            c.fillRect(340, 320, 75, 135); 
+            c.fillRect(70, 320, 45, 85);
+            c.fillRect(180, 490, 75, 105);
+            c.fillRect(60, 180, 140, 65);
+            c.fillRect(640, 40, 45, 85);
+            c.fillRect(860, 120, 85, 45);
+            c.fillRect(45, 610, 62, 115); 
             
-            //eighth symbol do not enter
+            //eighth symbol 
             for(int i = 0; i < 40; i++) {
                 c.drawImage(cycleRight, 450+i, 350, null); 
                 try{Thread.sleep(3); } catch(Exception e) {}
@@ -260,19 +260,19 @@ public class Maze {
                 c.drawImage(cycleDown, 500, 350+i, null); 
                 try{Thread.sleep(3); } catch(Exception e) {}
             }
+            c.fillRect(470, 570, 85, 150);
             c.drawImage(p18, 0, 0, null);
             c.getChar(); 
             c.drawImage(mazeMap, 0, 0, null); 
-            c.fillRect(70, 320, 45, 95);
-            c.fillRect(180, 490, 75, 120);
-            c.fillRect(50, 180, 140, 85);
-            c.fillRect(560, 40, 105, 95);
-            c.fillRect(850, 160, 105, 80);
-            c.fillRect(45, 610, 62, 115);
-            c.fillRect(340, 320, 75, 135); 
-            c.fillRect(470, 570, 85, 150);
+            c.fillRect(70, 320, 45, 85);
+            c.fillRect(180, 490, 75, 105);
+            c.fillRect(60, 180, 140, 65);
+            c.fillRect(640, 40, 45, 85);
+            c.fillRect(860, 120, 85, 45);
+            c.fillRect(45, 610, 62, 115); 
+            c.fillRect(340, 320, 75, 135);
             
-            //ninth symbol no turning
+            //ninth symbol
             for(int i = 0; i < 280; i++) {
                 c.drawImage(cycleRight, 600 + i, 650, null);
                 try{Thread.sleep(3); } catch(Exception e) {}
@@ -282,21 +282,20 @@ public class Maze {
                 c.drawImage(cycleUp, 890, 550 - i, null); 
                 try{Thread.sleep(3); } catch(Exception e) {}
             }
+            c.fillRect(880, 480, 80, 120);
             c.drawImage(p19, 0, 0, null);
             c.getChar(); 
             c.drawImage(mazeMap, 0, 0, null); 
-            c.fillRect(70, 320, 45, 95);
-            c.fillRect(180, 490, 75, 120);
-            c.fillRect(50, 180, 140, 85);
-            c.fillRect(560, 40, 105, 95);
-            c.fillRect(850, 160, 105, 80);
-            c.fillRect(45, 610, 62, 115);
-            c.fillRect(340, 320, 75, 135); 
+            c.fillRect(70, 320, 45, 85);
+            c.fillRect(180, 490, 75, 105);
+            c.fillRect(60, 180, 140, 65);
+            c.fillRect(640, 40, 45, 85);
+            c.fillRect(860, 120, 85, 45);
+            c.fillRect(45, 610, 62, 115); 
+            c.fillRect(340, 320, 75, 135);
             c.fillRect(470, 570, 85, 150);
-            c.fillRect(880, 480, 80, 120);
             
-            //tenth symbol yield
-            
+            //tenth symbol 
             for(int i = 0; i < 130; i++) {
                 c.drawImage(cycleDown, 890, 490 + i, null); 
                 try{Thread.sleep(3); } catch(Exception e) {}
@@ -311,19 +310,20 @@ public class Maze {
                 c.drawImage(cycleUp, 740, 640-i, null); 
                 try{Thread.sleep(3); } catch(Exception e) {}
             }
+            c.fillRect(720, 320, 85, 175);
             c.drawImage(p20, 0, 0, null);
             c.getChar(); 
             c.drawImage(mazeMap, 0, 0, null); 
-            c.fillRect(70, 320, 45, 95);
-            c.fillRect(180, 490, 75, 120);
-            c.fillRect(50, 180, 140, 85);
-            c.fillRect(560, 40, 105, 95);
-            c.fillRect(850, 160, 105, 80);
-            c.fillRect(45, 610, 62, 115);
-            c.fillRect(340, 320, 75, 135); 
+            c.fillRect(70, 320, 45, 85);
+            c.fillRect(180, 490, 75, 105);
+            c.fillRect(60, 180, 140, 65);
+            c.fillRect(640, 40, 45, 85);
+            c.fillRect(860, 120, 85, 45);
+            c.fillRect(45, 610, 62, 115); 
+            c.fillRect(340, 320, 75, 135);
             c.fillRect(470, 570, 85, 150);
             c.fillRect(880, 480, 80, 120);
-            c.fillRect(700, 300, 120, 175);
+            c.fillRect(720, 320, 85, 175);
             
             //exit 
             for(int i = 0; i < 180; i++) {
