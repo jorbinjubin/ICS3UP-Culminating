@@ -22,7 +22,7 @@ public class Leaderboard {
             
             for(int i = 0; i < 10; i++) {
                 line = br.readLine(); 
-                if(line == null) {
+                if(line.equals(null)) {
                     line = "unknown,0000"; 
                 }
                 names[i] = line.substring(0, line.indexOf(",")); 
@@ -76,4 +76,34 @@ public class Leaderboard {
         }
     }
     
+    public void drawLB() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("highscores.txt"));
+            String[][] scores = new String[2][10];
+            String[] temp = new String[2];
+            for(int i = 0; i < 10; i++) {   
+                temp = br.readLine().split(",");
+                scores[0][i] = temp[0];
+                scores[1][i] = temp[1];
+            }
+            
+            
+        }
+        catch(FileNotFoundException fnf) {
+            new Message("File Not Found", "Error!");
+        }
+        catch(IOException ioe) {
+            new Message("File Error");
+        }
+        //catch (Exception e) {
+          //  new Message("Unknown Error", "Error!");
+        //}
+        
+    }
+    
+    public void run() {
+    drawLB();
+        //calculateLeaderboard();
+        //writeScore();
+    }
 }
