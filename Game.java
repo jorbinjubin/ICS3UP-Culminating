@@ -70,7 +70,32 @@ public class Game {
 	c.clear();
 	debug.println("dieded");
     }
-    
+
+	public void saveUser() {
+        try {
+            Image results = ImageIO.read(new File("results.jpg")); 
+            c.drawImage(results, 0, 0, null); 
+            c.setFont(new Font("Times New Roman", 0, 32));
+            String userScore = score + ""; 
+            String timeTaken = time/1000 + ""; 
+            String username = ""; 
+        
+            c.drawString(userScore, 600, 290); 
+            c.drawString(timeTaken, 600, 390); 
+            
+            c.setFont(new Font("Times New Roman", 0, 24));
+            while(true) {
+                char ch = c.getChar(); 
+                if(ch == '\n') break; 
+                if(!Character.isLetterOrDigit(ch)) throw new Exception(); 
+                else username += ch; 
+                c.drawString(username, 600, 500); 
+            }
+        }
+        catch(IOException e) {}
+        catch(Exception e) {}
+    }
+	
     public static void main(String[] args) {
 	Game g = new Game();
 	g.anim();
