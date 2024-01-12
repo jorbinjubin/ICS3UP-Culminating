@@ -8,12 +8,13 @@ public class Leaderboard {
     Console c;   
     int[] scores = new int[10]; 
     String[] names = new String[10]; 
-              
+	      
     public Leaderboard (Console con) {
-        c = con;
+	c = con;
     }
     
     public void calculateLeaderboard(String user, int correct, int time) throws IOException {
+
         try {
             BufferedReader br = new BufferedReader (new FileReader("highscores.txt")); 
             String line; 
@@ -55,28 +56,29 @@ public class Leaderboard {
     }
     
     public void writeScore() throws IOException {
-        try { 
-            String line; 
-            PrintWriter pw = new PrintWriter(new FileWriter("highscores.txt")); 
-            for(int i = 0; i < 10; i++) {
-                if(scores[i] == 0) line = names[i] + ",----"; 
-                else line = names[i] + "," + scores[i];
-                pw.println(line);
-            }
-            pw.close();
-        }
-        catch (FileNotFoundException e) {
-            new Message("File Not Found", "Error!"); 
-        }
-        catch (IOException ioe) {
-            new Message("File Error", "Error!");
-        }
-        catch (Exception e) {
-            new Message("Unknown error", "Error!");
-        }
+	try { 
+	    String line; 
+	    PrintWriter pw = new PrintWriter(new FileWriter("highscores.txt")); 
+	    for(int i = 0; i < 10; i++) {
+		if(scores[i] == 0) line = names[i] + ",----"; 
+		else line = names[i] + "," + scores[i];
+		pw.println(line);
+	    }
+	    pw.close();
+	}
+	catch (FileNotFoundException e) {
+	    new Message("File Not Found", "Error!"); 
+	}
+	catch (IOException ioe) {
+	    new Message("File Error", "Error!");
+	}
+	catch (Exception e) {
+	    new Message("Unknown error", "Error!");
+	}
     }
     
     public void drawLB() {
+
         try {
             BufferedReader br = new BufferedReader(new FileReader("highscores.txt"));
             String[][] scores = new String[2][10];
@@ -99,10 +101,12 @@ public class Leaderboard {
           //  new Message("Unknown Error", "Error!");
         //}
         
+
     }
     
     public void run() {
     drawLB();
+
         //calculateLeaderboard();
         //writeScore();
     }

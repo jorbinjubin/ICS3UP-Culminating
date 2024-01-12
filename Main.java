@@ -45,8 +45,9 @@ public class Main {
     
     public void lb() {
 	c.clear();
-	c.println("entered leaderboard");
-	c.getChar();
+	Leaderboard l = new Leaderboard(c);
+	l.run();
+	
     }
     
     public static void main(String[] args) {
