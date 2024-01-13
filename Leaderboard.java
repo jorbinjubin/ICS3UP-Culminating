@@ -15,7 +15,7 @@ public class Leaderboard {
     }
     
     public void getInfo() {
-        Game g = new Game(); 
+        Game g = new Game(c); 
         user = g.getUsername();
         correct =  g.getNumCorrect();
         time = g.getTime();
