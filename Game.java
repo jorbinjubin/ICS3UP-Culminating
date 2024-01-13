@@ -38,8 +38,15 @@ public class Game {
 	c.fillRect(0, 200, 1024, 400);
 	c.setColor(curb);
 	c.fillRect(0, 157, 1024, 43);
+	c.fillRect(0, 600, 1024, 43);
     }
-
+    public void drawIntersection(int startX, int endX) {
+        c.setColor(road); 
+        c.fillRect(startX, 0, endX-startX, 760); 
+        c.setColor(curb); 
+        c.fillRect(startX, 0, (int)((endX-startX)/10), 760); 
+        c.fillRect(endX-(int)((endX-startX)/10), 0, (int)((endX-startX)/10), 760); 
+    }
     public void drawLight(int x) {
 	try {
 	    Image lightTop = ImageIO.read(new File("StreetLampTop.jpeg"));
@@ -56,100 +63,6 @@ public class Game {
 	Image[] signs = {};
 
     }
-
-    public void house() {
-	Image houseDoor;
-	c.setColor(new Color(91, 46, 13));
-	c.fillRect(0, 0, 1024, 760);
-	try {
-	    houseDoor = ImageIO.read(new File("house.jpg"));
-	    c.drawImage(houseDoor, 0, 0, null);
-	} catch (FileNotFoundException fnf) {
-	    new Message("Image file not found", "Error!");
-	} catch (IOException ioe) {
-	    new Message("File Error", "Error!");
-	} catch (Exception e) {
-	    new Message("Unknown Error", "Error!");
-	}
-
-	c.setColor(new Color(91, 46, 13));
-	c.fillRect(0, 0, 1024, 100);
-	Font f = new Font("Consolas", 0, 30);
-	c.setFont(f);
-	c.setColor(new Color(255, 20, 20));
-	fancyprint("Press any key to continue...", 280, 250, 20);
-
-	c.getChar();
-	c.setColor(new Color(91, 46, 13));
-	c.fillRect(0, 0, 1024, 760);
-
-	try {
-	    Image houseQuestion = ImageIO.read(new File("selected0.jpg"));
-	    c.drawImage(houseQuestion, 0, 0, null);
-	} catch (FileNotFoundException fnf) {
-	    new Message("Image file not found", "Error!");
-	} catch (IOException ioe) {
-	    new Message("File Error", "Error!");
-	} catch (Exception e) {
-	    new Message("Unknown Error", "Error!");
-	}
-
-	c.setColor(Color.red);
-	int choice = 0;
-	int chosens = 0;
-	int[] chosen = new int[3];
-
-	Image[] images = new Image[7];
-	try { //preloading images into an array
-	    for (int i = 0; i < 7; i++) {
-		images[i] = ImageIO.read(new File("selected" + i + ".jpg"));
-	    }
-	} catch (FileNotFoundException fnf) {
-	    new Message("Image file not found", "Error!");
-	} catch (IOException ioe) {
-	    new Message("File Error", "Error!");
-	} catch (Exception e) {
-	    new Message("Unknown Error", "Error!");
-	}
-
-	while (chosens < 3) {
-	    if (c.isCharAvail()) {
-		switch (c.getChar()) {
-		case 'a':
-		case 'h':
-		    if (choice > 0) choice--;
-		    break;
-		case 'd':
-		case 'l':
-		    if (choice < 6) choice++;
-		    break;
-		default:
-		    break;
-		case '\n':
-		    chosen[chosens] = choice;
-		    chosens++;
-		    break;
-		}
-		c.drawImage(images[choice], 0, 0, null);
-	    }
-	}
-	c.clear();
-	try {
-	    Image houseimage = ImageIO.read(new File("house.jpg"));
-	    c.drawImage(houseimage, 0, 0, null);
-	} catch (FileNotFoundException fnf) {
-	    new Message("Image file not found", "Error!");
-	} catch (IOException ioe) {
-	    new Message("File Error", "Error!");
-	} catch (Exception e) {
-	    new Message("Unknown Error", "Error!");
-	}
-	c.setColor(new Color(91, 46, 13));
-	c.fillRect(0, 0, 1024, 100);
-
-	fancyprint("Alright, now we're ready to go", 270, 230, 20);
-	fancyprint("Press any key to continue...", 280, 255, 20);
-    }
     public void drawBike() {
 	try {
 	    Image cycleRight = ImageIO.read(new File("Bike_ride.jpeg"));
@@ -158,6 +71,102 @@ public class Game {
 	} catch (IOException ioe) {}
     }
 
+    public void house() {
+        Image houseDoor;
+        c.setColor(new Color(91, 46, 13));
+        c.fillRect(0, 0, 1024, 760);
+        try {
+            houseDoor = ImageIO.read(new File("houseq1.jpg"));
+            c.drawImage(houseDoor, 0, 0, null);
+        } catch (FileNotFoundException fnf) {
+            new Message("Image file not found", "Error!");
+        } catch (IOException ioe) {
+            new Message("File Error", "Error!");
+        } catch (Exception e) {
+            new Message("Unknown Error", "Error!");
+        }
+
+        c.setColor(new Color(91, 46, 13));
+        c.fillRect(0, 0, 1024, 60);
+        Font f = new Font("Consolas", 0, 30);
+        c.setFont(f);
+        c.setColor(new Color(255, 20, 20));
+        fancyprint("Press any key to continue...", 280, 40, 20);
+
+        c.getChar();
+        c.setColor(new Color(91, 46, 13));
+        c.fillRect(0, 0, 1024, 760);
+
+        try {
+            Image houseQuestion = ImageIO.read(new File("selected0.jpg"));
+            c.drawImage(houseQuestion, 0, 0, null);
+        } catch (FileNotFoundException fnf) {
+            new Message("Image file not found", "Error!");
+        } catch (IOException ioe) {
+            new Message("File Error", "Error!");
+        } catch (Exception e) {
+            new Message("Unknown Error", "Error!");
+        }
+
+        c.setColor(Color.red);
+        int choice = 0;
+        int chosens = 0;
+        int[] chosen = new int[3];
+
+        Image[] images = new Image[7];
+        try { //preloading images into an array
+            for (int i = 0; i < 7; i++) {
+                images[i] = ImageIO.read(new File("selected" + i + ".jpg"));
+            }
+        } catch (FileNotFoundException fnf) {
+            new Message("Image file not found", "Error!");
+        } catch (IOException ioe) {
+            new Message("File Error", "Error!");
+        } catch (Exception e) {
+            new Message("Unknown Error", "Error!");
+        }
+
+        while (chosens < 3) {
+            if (c.isCharAvail()) {
+                switch (c.getChar()) {
+                case 'a':
+                case 'h':
+                    if (choice > 0) choice--;
+                    break;
+                case 'd':
+                case 'l':
+                    if (choice < 6) choice++;
+                    break;
+                default:
+                    break;
+                case '\n':
+                    chosen[chosens] = choice;
+                    chosens++;
+                    if(choice == 0) correct++; 
+                    break;
+                }
+                c.drawImage(images[choice], 0, 0, null);
+            }
+        }
+        c.clear();
+        try {
+            Image houseimage = ImageIO.read(new File("houseq1.jpg"));
+            c.drawImage(houseimage, 0, 0, null);
+        } catch (FileNotFoundException fnf) {
+            new Message("Image file not found", "Error!");
+        } catch (IOException ioe) {
+            new Message("File Error", "Error!");
+        } catch (Exception e) {
+            new Message("Unknown Error", "Error!");
+        }
+        c.setColor(new Color(189,224,254));
+        c.fillRect(0, 0, 1024, 1000);
+        
+        c.setColor(Color.black);
+        fancyprint("Alright, now we're ready to go", 270, 360, 20);
+        fancyprint("Press any key to continue...", 280, 405, 20);
+    }
+	
     public void anim() {
 	house();
 	c.getChar();
