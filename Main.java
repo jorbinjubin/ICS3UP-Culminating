@@ -3,6 +3,13 @@ import hsa.Console;
 import hsa.Message;
 import java.util.*;
 
+/*
+* [classname] class for Bicycle Safety Game
+* 2024-01-07
+* Justin Jiang, Fei Wang
+* ICS3UP
+*/
+
 public class Main {
     
     //declaration
