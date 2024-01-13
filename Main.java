@@ -80,8 +80,7 @@ public class Main {
                     if(m.getHasChosen2()) {
                         if(m.getChoice() == 0) { z.maze(); }
                         else if(m.getChoice() == 1) { 
-                            z.play(0); 
-                            z.play(1); 
+                            z.play();
                             if(z.saveScore == 'y') z.lb(1);
                             else continue;
                         }
