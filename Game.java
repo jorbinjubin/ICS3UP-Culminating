@@ -7,8 +7,9 @@ import hsa.Message;
 
 public class Game {
     private Console c;
-    int score = 0;
+    int correct = 0;
     int time = 0;
+    String username = ""; 
     Console debug = new Console("Debugging Window");
     public void delay(int ms) {
 	try {
@@ -200,27 +201,83 @@ public class Game {
 	c.println("dieded");
     }
 
-    public void saveUser() {
-	try {
-	    Image results = ImageIO.read(new File("results.jpg"));
-	    c.drawImage(results, 0, 0, null);
-	    c.setFont(new Font("Times New Roman", 0, 32));
-	    String userScore = score + "";
-	    String timeTaken = time / 1000 + "";
-	    String username = "";
+       public void saveUser() {
+        try {
+            Image results = ImageIO.read(new File("results.jpg"));
+            c.drawImage(results, 0, 0, null); 
+            c.setFont(new Font("Arial", 0, 54));
+            String userScore; 
+            
+            if(correct == 0) userScore = "0000"; 
+            else userScore = (1000*correct - (time - 30000)/10000) + ""; 
+            String timeTaken = time/1000 + ""; 
+        
+            c.drawString(userScore, 580, 300); 
+            c.drawString(timeTaken, 640, 395); 
+            
+            c.setFont(new Font("Arial", 0, 32));
+            
+            while(true) {
+                char ch = c.getChar(); 
+                if(ch == '\n' && username.length() >= 1) break; 
+                if(ch == 8) { 
+                    if(username.length() == 0) { 
+                        new Message("There are no characters to delete.", "Error"); 
+                        continue;
+                    } 
+                    else { 
+                        username = username.substring(0, username.length()-1);
+                        c.setColor(new Color(255,177,121)); 
+                        c.fillRect(500, 420, 350, 100); 
+                        c.setColor(Color.black); 
+                        c.drawString(username, 500, 478); 
+                        continue;
+                    }
+                }
+                
+                while(!Character.isLetterOrDigit(ch)) {
+                    new Message("Please use alphanumerical characters.", "Error!");
+                    ch = c.getChar(); 
+                }
+                
+                while(ch == '\n' && username.length() < 1) { //what da fuq is 'ch.size'
+                    new Message("Username too short!", "Error!"); 
+                    ch = c.getChar(); 
+                }
+                
+                while(username.length() == 20) {
+                    new Message("Username has reached maximum length.", "Error!");
+                    ch = c.getChar(); 
+                }
+                
+                if(ch != 8 && ch != '\n') username += ch; 
+                c.setColor(new Color(255,177,121)); 
+                c.fillRect(500, 420, 350, 100); 
+                c.setColor(Color.black); 
+                c.drawString(username, 500, 478); 
+            }
+            
+            char saveScore = c.getChar(); 
+        }
+        
+        catch (FileNotFoundException fnf) {
+            new Message("File Not Found", "Error!"); 
+        }
+        catch (IOException ioe) {
+            new Message("File Error", "Error!");
+        }
+    }
+    
+    public String getUsername() {
+        return username; 
+    }
 
-	    c.drawString(userScore, 600, 290);
-	    c.drawString(timeTaken, 600, 390);
+    public int getNumCorrect() {
+        return correct;
+    } 
 
-	    c.setFont(new Font("Times New Roman", 0, 24));
-	    while (true) {
-		char ch = c.getChar();
-		if (ch == '\n') break;
-		if (!Character.isLetterOrDigit(ch)) throw new Exception();
-		else username += ch;
-		c.drawString(username, 600, 500);
-	    }
-	} catch (IOException e) {} catch (Exception e) {}
+    public int getTime() {
+        return time; 
     }
 
     public static void main(String[] args) {
