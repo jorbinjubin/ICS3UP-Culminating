@@ -10,6 +10,7 @@ public class Game {
     int correct = 0;
     int time = 0;
     String username = "";
+    char saveScore = ' ';
     Console debug = new Console("Debugging Window");
     public void delay(int ms) {
 	try {
@@ -253,7 +254,7 @@ public class Game {
 		c.drawString(username, 500, 478);
 	    }
 
-	    char saveScore = c.getChar();
+	    saveScore = c.getChar();
 	} catch (FileNotFoundException fnf) {
 	    new Message("File Not Found", "Error!");
 	} catch (IOException ioe) {
