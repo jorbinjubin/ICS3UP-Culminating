@@ -274,7 +274,7 @@ public class Game {
     }
 
     public void run() {
-	anim();
-	saveUser();
+	    anim();
+	    saveUser();
     }
 }
