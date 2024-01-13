@@ -39,11 +39,12 @@ public class Instructions {
             ch = Character.toUpperCase(ch);
             
             while(ch == 'W' || ch == 'A' || ch == 'S' || ch == 'D') {
-                c.drawImage(WASD, 100, 450, null);
                 if(ch=='W') c.drawImage(W, 100, 450, null);
                 if(ch == 'A') c.drawImage(A, 100, 450, null);
                 if(ch == 'S') c.drawImage(S, 100, 450, null);
                 if(ch == 'D') c.drawImage(D, 100, 450, null);
+                try { Thread.sleep(200); } catch(Exception e) {} 
+                c.drawImage(WASD, 100, 450, null);
                 ch = c.getChar(); 
                 ch = Character.toUpperCase(ch); 
             }

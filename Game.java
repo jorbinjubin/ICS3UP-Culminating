@@ -220,8 +220,10 @@ public class Game {
 		else username += ch;
 		c.drawString(username, 600, 500);
 	    }
-	} catch (IOException e) {} catch (Exception e) {}
-    }
+
+	}
+	catch(IOException e) {}
+	catch(Exception e) {}
 
     public static void main(String[] args) {
 	Game g = new Game();
