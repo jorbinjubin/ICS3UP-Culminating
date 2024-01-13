@@ -280,5 +280,6 @@ public class Game {
     
     public void run() {
 	g.anim();
+	g.saveUser();
     }
 }
