@@ -18,7 +18,10 @@ public class Main {
 	this.m = m;
 	this.c = con;
     }
-    
+    public void tutorial() {
+	Tutorial t = new Tutorial(c);
+	t.run();
+    }
     public void menu(int x) {
 	if(x == 1) m.menuSelect();
 	else if(x==2) m.menu2Select();
@@ -39,8 +42,8 @@ public class Main {
 
     public void play() {
 	c.clear();
-	c.println("entered play");
-	c.getChar();
+	Game g = new Game(c);
+	g.run();
     }
     
     public void lb() {

@@ -27,7 +27,7 @@ public class Tutorial {
 	}
     }
     
-     public void animateLine(int x1, int y1, int x2, int y2, int thickness) {
+    public void animateLine(int x1, int y1, int x2, int y2, int thickness) {
 	int slope = Math.round((y2-y1)/(x2-x1)); //scrapped idea from mycreation
 	int dX = x2-x1;
 	int dY = y2-y1;
@@ -56,10 +56,8 @@ public class Tutorial {
 	    delay(speed);
 	}
     }
-    //public Tutorial(Console con) {
-	//c = con;
-    public Tutorial() {
-	c = new Console(38,128);
+    public Tutorial(Console con) {
+	c = con;
     }
     public void tutorial() {
 	Font f = new Font("Consolas", 0, 40);
@@ -90,7 +88,6 @@ public class Tutorial {
 	animateLine(410, 530, 480, 460, 6);
 	animateLine(410, 530, 480, 460, 7);
 	animateLine(478, 462, 590, 460, 6);
-	//c.drawLine(410, 530, 480, 460);
 	animateLine(520, 530, 590, 460, 7);
 	for(int i = 0; i < 6; i++) {
 	    c.drawLine(610+i, 530, 570+i, 420);
@@ -128,9 +125,7 @@ public class Tutorial {
 	c.getChar();
     }
     
-    
-    public static void main(String[] args) {
-	Tutorial t = new Tutorial();
+    public void run() {
 	t.tutorial();
     }
     
