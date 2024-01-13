@@ -52,7 +52,7 @@ public class Main {
 
     public void play() {
         c.clear();
-        Game g = new Game(); 
+        Game g = new Game(c); 
         g.run();
         saveScore = g.saveScore;
     }
