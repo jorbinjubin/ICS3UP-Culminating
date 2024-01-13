@@ -126,7 +126,7 @@ public class Tutorial {
     }
     
     public void run() {
-	t.tutorial();
+	tutorial();
     }
     
 }
