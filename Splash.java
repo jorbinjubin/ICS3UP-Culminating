@@ -43,8 +43,8 @@ public class Splash {
             Image title = ImageIO.read (new File("title.jpg"));
             Image cycles = ImageIO.read(new File("cycles.jpg")); 
             Image newScreen = ImageIO.read(new File("continue.jpg"));
-		
-	    // code for changing size of image from https://stackoverflow.com/questions/5895829/resizing-image-in-java
+                
+            // code for changing size of image from https://stackoverflow.com/questions/5895829/resizing-image-in-java
             stripes = stripes.getScaledInstance(1024, 768, stripes.SCALE_DEFAULT);
             title = title.getScaledInstance(588, 312, title.SCALE_DEFAULT);
             cycles = cycles.getScaledInstance(1020, 200, cycles.SCALE_DEFAULT);
