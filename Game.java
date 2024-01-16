@@ -396,7 +396,7 @@ public class Game {
 
                 if (ch == '\n' && username.length() < 1) {
                     new Message("Username too short!", "Error!");
-                    continue
+                    continue;
                 }
 
                 if(username.length() == 20) {
