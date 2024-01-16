@@ -91,9 +91,9 @@ public class Game {
     //overload drawCrosswalk to draw them horizontally instead of vertically
     //made by: Fei
     public void drawCrosswalk(int x, int y) {
-        for(int i = 0; i < 5; i++) {
+        for(int i = 0; i < 3; i++) {
             c.setColor(Color.white); 
-            c.fillRect(x+102*i, y, 30, 200);
+            c.fillRect(x+120*i, y, 20, 60);
         }
         
     }
@@ -111,6 +111,15 @@ public class Game {
             c.fillRect(x, 665, 200, 100);
     }
     
+    //erases the area of the crosswalk, curb, and grass above and beneath it 
+    //made by: Fei 
+    public void drawIntersection(int x) {
+        c.setColor(road); 
+        c.fillRect(x, 0, 280, 768);
+        drawCrosswalk(x+5, 605); 
+        drawCrosswalk(x+5, 60);
+    }
+    
     //draws black dots representing pedestrians 
     //made by: Fei
     public void drawPedestrians(int x, int y) {
@@ -121,6 +130,23 @@ public class Game {
         c.fillOval(x+60, y-20, 20, 20);
         c.fillOval(x+110, y-30, 20, 20);
         c.fillOval(x+130, y+10, 20, 20);
+    }
+    
+    //draws traffic going the other way in the form of bicycles
+    //made by: Fei
+    //variables:
+    //Image purpleCycle - image of purple bicycle
+    //Image blueCycle - image of blue bicycle
+    public void drawTraffic(int x, int y) {
+        try {
+            Image purpleCycle = ImageIO.read(new File("purpleCycle.jpg")); 
+            Image blueCycle = ImageIO.read(new File("blueCycle.jpg"));
+            purpleCycle = purpleCycle.getScaledInstance(50, 100, purpleCycle.SCALE_DEFAULT);
+            blueCycle = blueCycle.getScaledInstance(50, 100, blueCycle.SCALE_DEFAULT);
+            c.drawImage(purpleCycle, x+10, y, null); 
+            c.drawImage(blueCycle, x + 160, y, null); 
+        }
+        catch(IOException ioe) {} 
     }
     
     //scene of first question inside the house 
@@ -237,6 +263,7 @@ public class Game {
             Image sign5 = ImageIO.read(new File("no bicycles allowed.jpg"));
             Image sign6 = ImageIO.read(new File("bicycles only.jpg"));
             int pedestrianY = 560;
+            int trafficY = 640; 
             
             boolean[] fail = new boolean[6];  
             for(int h = 0; h < 6; h++) {
@@ -304,8 +331,17 @@ public class Game {
                 }
                 else if(x <= -4096) c.drawImage(sign5, 1024+x+4096, 680, null);
                 else if(x <= -3072) { 
-                    c.drawImage(sign4, 1024+x+3072, 680, null);
-                    drawCrosswalk(1024+x+1024, 719);
+                    c.drawImage(sign4, 870+x+3072, 680, null);
+                    drawIntersection(930+x+3102);
+                    if(checkTime >= 500 && x <= -3300) {
+                        drawTraffic(950+x+3102, trafficY); 
+                        trafficY -= 3; 
+                        if( x <= -3450 && trafficY >= 400) { 
+                            new Message("You did not heed the yield sign!", "Fail");
+                            fail[3] = true;
+                            trafficY -= 200;
+                        }
+                    } 
                 }
                 else if(x <= -2048) c.drawImage(sign3, 1024+x+2048, 680, null);
                 
@@ -314,8 +350,9 @@ public class Game {
                     c.setColor(new Color(105, 105, 105));
                     c.fillRect(2148 + x, 600, 400, 200);
                     if(x < -1500 && x > -1900) {
-                        if(bikeY > 20) {//insert fail condition here for array
+                        if(bikeY > 20) {
                             new Message("You went into the turn", "Fail");
+                            fail[1] = true; 
                             bikeY = 0; 
                             drawBike(1, bikeY);
                         }
@@ -332,7 +369,11 @@ public class Game {
                     if(checkTime >= 500 && x <= -200) { 
                         drawPedestrians(950+x, pedestrianY); 
                         pedestrianY -= 1; 
-                        if( x <= -360 && pedestrianY >= 350) fail[0] = true;
+                        if( x <= -360 && pedestrianY >= 400) { 
+                            new Message("You did not heed the warning for pedestrians!", "Fail");
+                            fail[0] = true;
+                            pedestrianY -= 200;
+                        }
                     }
                     
                 }
@@ -364,11 +405,11 @@ public class Game {
             c.setColor(Color.black); 
             
             if (correct == 0) userScore = "0000";
-            else userScore = (1000 * correct - (checkTime - 300) / 10) + "";
+            else userScore = (1000 * correct - 100*(checkTime - 300)) + "";
             String timeTaken = checkTime + "";
 
             c.drawString(userScore, 580, 300);
-            c.drawString(timeTaken, 640, 395);
+            c.drawString(timeTaken, 580, 395);
 
             c.setFont(new Font("Arial", 0, 32));
 
@@ -384,7 +425,7 @@ public class Game {
                         c.setColor(new Color(255, 177, 121));
                         c.fillRect(500, 420, 350, 100);
                         c.setColor(Color.black);
-                        c.drawString(username, 500, 478);
+                        c.drawString(username, 480, 478);
                         continue;
                     }
                 }
@@ -406,7 +447,7 @@ public class Game {
                 c.setColor(new Color(255, 177, 121));
                 c.fillRect(500, 420, 350, 100);
                 c.setColor(Color.black);
-                c.drawString(username, 500, 478);
+                c.drawString(username, 480, 478);
             }
 
             saveScore = c.getChar();
