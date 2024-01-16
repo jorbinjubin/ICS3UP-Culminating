@@ -24,29 +24,29 @@ public class Input extends Thread {
     
     //Constructor
     public Input(Console con) {
-	c = con;
+        c = con;
     }
 
     //returns the users character input 
     public char getChar() {
-	return ch;
+        return ch;
     }
     
     //looks for keyboard input once thread is started
     public void readChar() {
-	while(true) {
-	    ch = c.getChar(); 
-	}
+        while(true) {
+            ch = c.getChar(); 
+        }
     }
     
     //sets the read character to something else so that if the user presses
     //a key once, it won't be treated like they're holding it down 
     public void setChar(char x) {
-	ch = x;
+        ch = x;
     }
     
     //runs readChar to continuously take user input 
     public void run() {
-	readChar();
+        readChar();
     }
 }
