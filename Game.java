@@ -219,7 +219,7 @@ public class Game {
         c.fillRect(0, 0, 1024, 1000);
         
         c.setColor(Color.black);
-        fancyprint("Alright, now we're ready to go", 270, 360, 20);
+        fancyprint("Alright, now we're ready to go. If you would like to exit the game, press enter", 230, 360, 20);
         fancyprint("Press any key to continue...", 280, 405, 20);
     }
 
@@ -237,6 +237,7 @@ public class Game {
             Image sign5 = ImageIO.read(new File("no bicycles allowed.jpg"));
             Image sign6 = ImageIO.read(new File("bicycles only.jpg"));
             int pedestrianY = 560;
+            
             boolean[] fail = new boolean[6];  
             for(int h = 0; h < 6; h++) {
                 fail[h] = false;
