@@ -23,32 +23,32 @@ public class Timer extends Thread {
     //returns whether or not the time has run out 
     //made by Justin 
     public boolean timeOver() {
-	return timeUp;
+        return timeUp;
     }
     
     //displays the timer when called 
     //made by: Fei 
     public void timer() {
-	// if there is time left 
-	if(time > 0) {
-	    // timer background
-	    Color pink = new Color(255, 180, 222);
-	    c.setColor(pink);
-	    c.fillRect(10, 15, 200, 35); 
-	    
-	    // displays time remaining
-	    c.setFont(new Font("Arial", 0, 18));
-	    c.setColor(Color.black);
-	    c.drawString("Time remaining:        s", 20, 40);
-	    String temp = time + "";
-	    c.drawString(temp, 155, 40);
-	} 
-	else timeUp = true; // otherwise no time left
+        // if there is time left 
+        if(time > 0) {
+            // timer background
+            Color pink = new Color(255, 180, 222);
+            c.setColor(pink);
+            c.fillRect(10, 15, 200, 35); 
+            
+            // displays time remaining
+            c.setFont(new Font("Arial", 0, 18));
+            c.setColor(Color.black);
+            c.drawString("Time remaining:        s", 20, 40);
+            String temp = time + "";
+            c.drawString(temp, 155, 40);
+        } 
+        else timeUp = true; // otherwise no time left
     }
     
     //constructor
     //made by: justin
     public Timer(Console con) {
-	c = con;
+        c = con;
     }
 }
