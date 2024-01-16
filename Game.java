@@ -260,13 +260,12 @@ public class Game {
             Image sign2 = ImageIO.read(new File("no right turns.jpg"));
             Image sign3 = ImageIO.read(new File("do not enter.jpg"));
             Image sign4 = ImageIO.read(new File("yield.jpg"));
-            Image sign5 = ImageIO.read(new File("no bicycles allowed.jpg"));
-            Image sign6 = ImageIO.read(new File("bicycles only.jpg"));
+
             int pedestrianY = 560;
             int trafficY = 640; 
             
-            boolean[] fail = new boolean[6];  
-            for(int h = 0; h < 6; h++) {
+            boolean[] fail = new boolean[4];  
+            for(int h = 0; h < 4; h++) {
                 fail[h] = false;
             }
             
@@ -277,8 +276,6 @@ public class Game {
             sign2 = sign2.getScaledInstance(80, 80, sign2.SCALE_DEFAULT);
             sign3 = sign3.getScaledInstance(80, 80, sign3.SCALE_DEFAULT);
             sign4 = sign4.getScaledInstance(80, 80, sign4.SCALE_DEFAULT);
-            sign5 = sign5.getScaledInstance(80, 80, sign5.SCALE_DEFAULT);
-            sign6 = sign6.getScaledInstance(80, 80, sign6.SCALE_DEFAULT);
             c.drawImage(road, 0, 0, null);
             
             Input i = new Input(c);
@@ -288,7 +285,7 @@ public class Game {
             int bikeY = 0; 
             while(true) {
                 //if times up
-                if (t.timeOver()) break;
+                if (t.timeOver() || x <= 7000) break;
                 char ch = i.getChar();
                 eraseCrosswalkArea(950+x);
                 
@@ -326,10 +323,6 @@ public class Game {
                 i.setChar((char)0); //setting to null character (ASCII \0x0000) Source: https://www.asciitable.com/
                 
                 //each sign starts at 750, decreases as x decreases
-                if( x <= -5120) {
-                    c.drawImage(sign6, 1024+x+5120, 680, null); 
-                }
-                else if(x <= -4096) c.drawImage(sign5, 1024+x+4096, 680, null);
                 else if(x <= -3072) { 
                     c.drawImage(sign4, 870+x+3072, 680, null);
                     drawIntersection(930+x+3102);
@@ -343,7 +336,24 @@ public class Game {
                         }
                     } 
                 }
-                else if(x <= -2048) c.drawImage(sign3, 1024+x+2048, 680, null);
+                else if(x <= -2048) {
+                    c.setColor(new Color(105, 105, 105));
+                    c.fillRect(2148+454 + x, 600, 400, 200);
+                    c.drawImage(sign3, 1024+x+2048, 680, null);
+                    if(x<-2100 && x>-2400) {
+                        if(bikeY > 12) {
+                            Font f = new Font("Consolas", 0, 50);
+                            c.setFont(f);
+                            c.setColor(new Color(200, 146, 232));
+                            c.fillRoundRect(150, 150, 724, 460, 10, 10);
+                            c.setColor(Color.black);
+                            c.drawString("Good choice!", 391, 372);
+                            delay(1000);
+                            x = -2700;
+                            bikeY = 0;
+                        }
+                    }
+                }
                 
                 else if(x <= -1024) {
                     c.drawImage(sign2, 2048+x, 680, null);
