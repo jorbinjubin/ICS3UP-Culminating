@@ -116,6 +116,8 @@ public class Menu {
 	    
 	    // draws a border
 	    drawOutline(choice);
+	    
+	    try {Thread.sleep(10);} catch (Exception e) {}
 	}
     }
     
@@ -167,6 +169,8 @@ public class Menu {
 	    
 	    // draws a border
 	    drawOutline(choice);
+	    
+	    try {Thread.sleep(10);} catch (Exception e) {}
 	}
     }
    

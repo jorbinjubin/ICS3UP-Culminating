@@ -32,7 +32,7 @@ public class Game {
     Color road = new Color(105, 105, 105);
     Color curb = new Color(162, 162, 161);
     Color lamp_glow = new Color(255, 255, 10, 150);
-    Color green = new Color(30, 200, 30);
+    Color green = new Color(31,168,62);
     
     //constructor
     public Game(Console con) {
@@ -78,7 +78,55 @@ public class Game {
         } catch (IOException ioe) {}
     }
     
-    //cene of first question inside the house 
+    //draws a white crosswalk for pedestrians
+    //made by: Fei
+    public void drawCrosswalk(int x) {
+	for(int i = 0; i < 5; i++) {
+	    c.setColor(Color.white); 
+	    c.fillRect(x, 157+102*i, 200, 30);
+	}
+	
+    }
+    
+    //overload drawCrosswalk to draw them horizontally instead of vertically
+    //made by: Fei
+    public void drawCrosswalk(int x, int y) {
+	for(int i = 0; i < 5; i++) {
+	    c.setColor(Color.white); 
+	    c.fillRect(x+102*i, y, 30, 200);
+	}
+	
+    }
+    
+    //erases the area of the crosswalk, curb, and grass above and beneath it 
+    //made by: Fei 
+    public void eraseCrosswalkArea(int x) {
+	    c.setColor(road); 
+	    c.fillRect(x, 157, 200, 444);
+	    c.setColor(curb); 
+	    c.fillRect(x, 100, 200, 60);
+	    c.fillRect(x, 710, 200, 60);
+	    c.setColor(green); 
+	    c.fillRect(x, 0, 200, 101); 
+	    c.fillRect(x, 665, 200, 100);
+    }
+    
+    //draws black dots representing pedestrians 
+    //made by: Fei
+    public void drawPedestrians(int x, int y) {
+	c.setColor(Color.black); 
+	c.fillOval(x+5, y, 20, 20);
+	c.fillOval(x+55, y+5, 20, 20);  
+	c.fillOval(x+85, y+20, 20, 20);
+	c.fillOval(x+60, y-20, 20, 20);
+	c.fillOval(x+110, y-30, 20, 20);
+	c.fillOval(x+130, y+10, 20, 20);
+    }
+    
+    //scene of first question inside the house 
+    //made by: Justin and Fei 
+    //Variables: 
+    // Image houseDoor - image of the house background and the door 
     public void house() {
         Image houseDoor;
         c.setColor(new Color(91, 46, 13));
@@ -176,8 +224,9 @@ public class Game {
     }
 
     //animation for bicycle on the road 
-    //made by: Justin and Fei
+    //made by: Fei and Justin
     public void game() {
+
         int x = 0;
         try { 
             Image road = ImageIO.read(new File("Road.jpg"));
@@ -224,11 +273,13 @@ public class Game {
             c.getChar(); 
         }
         catch(IOException e) {}
+
     }
     
     //shows user their score and time elapsed, saves their username 
     //made by: Fei
     public void saveUser() {
+
         try {
             Image results = ImageIO.read(new File("results.jpg"));
             c.drawImage(results, 0, 0, null);

@@ -119,7 +119,7 @@ public class BicycleSafety {
 	Menu m = new Menu(b.c);
 	BicycleSafety z = new BicycleSafety(m, b.c);
 	
-	//z.splash();
+	z.splash();
 	while(true) {
 	    z.menu(1);
 	    if(m.getHasChosen1()) {
