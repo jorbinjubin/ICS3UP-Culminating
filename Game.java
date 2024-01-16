@@ -81,46 +81,46 @@ public class Game {
     //draws a white crosswalk for pedestrians
     //made by: Fei
     public void drawCrosswalk(int x) {
-	for(int i = 0; i < 5; i++) {
-	    c.setColor(Color.white); 
-	    c.fillRect(x, 157+102*i, 200, 30);
-	}
-	
+        for(int i = 0; i < 5; i++) {
+            c.setColor(Color.white); 
+            c.fillRect(x, 157+102*i, 200, 30);
+        }
+        
     }
     
     //overload drawCrosswalk to draw them horizontally instead of vertically
     //made by: Fei
     public void drawCrosswalk(int x, int y) {
-	for(int i = 0; i < 5; i++) {
-	    c.setColor(Color.white); 
-	    c.fillRect(x+102*i, y, 30, 200);
-	}
-	
+        for(int i = 0; i < 5; i++) {
+            c.setColor(Color.white); 
+            c.fillRect(x+102*i, y, 30, 200);
+        }
+        
     }
     
     //erases the area of the crosswalk, curb, and grass above and beneath it 
     //made by: Fei 
     public void eraseCrosswalkArea(int x) {
-	    c.setColor(road); 
-	    c.fillRect(x, 157, 200, 444);
-	    c.setColor(curb); 
-	    c.fillRect(x, 100, 200, 60);
-	    c.fillRect(x, 710, 200, 60);
-	    c.setColor(green); 
-	    c.fillRect(x, 0, 200, 101); 
-	    c.fillRect(x, 665, 200, 100);
+            c.setColor(road); 
+            c.fillRect(x, 157, 200, 444);
+            c.setColor(curb); 
+            c.fillRect(x, 100, 200, 60);
+            c.fillRect(x, 710, 200, 60);
+            c.setColor(green); 
+            c.fillRect(x, 0, 200, 101); 
+            c.fillRect(x, 665, 200, 100);
     }
     
     //draws black dots representing pedestrians 
     //made by: Fei
     public void drawPedestrians(int x, int y) {
-	c.setColor(Color.black); 
-	c.fillOval(x+5, y, 20, 20);
-	c.fillOval(x+55, y+5, 20, 20);  
-	c.fillOval(x+85, y+20, 20, 20);
-	c.fillOval(x+60, y-20, 20, 20);
-	c.fillOval(x+110, y-30, 20, 20);
-	c.fillOval(x+130, y+10, 20, 20);
+        c.setColor(Color.black); 
+        c.fillOval(x+5, y, 20, 20);
+        c.fillOval(x+55, y+5, 20, 20);  
+        c.fillOval(x+85, y+20, 20, 20);
+        c.fillOval(x+60, y-20, 20, 20);
+        c.fillOval(x+110, y-30, 20, 20);
+        c.fillOval(x+130, y+10, 20, 20);
     }
     
     //scene of first question inside the house 
@@ -226,11 +226,31 @@ public class Game {
     //animation for bicycle on the road 
     //made by: Fei and Justin
     public void game() {
-
         int x = 0;
         try { 
             Image road = ImageIO.read(new File("Road.jpg"));
             Image end = ImageIO.read(new File("sadBlahaj.jpg")); 
+            Image sign1 = ImageIO.read(new File("warning pedestrians.jpg"));
+            Image sign2 = ImageIO.read(new File("no right turns.jpg"));
+            Image sign3 = ImageIO.read(new File("do not enter .jpg"));
+            Image sign4 = ImageIO.read(new File("yield.jpg"));
+            Image sign5 = ImageIO.read(new File("no bicycles allowed.jpg"));
+            Image sign6 = ImageIO.read(new File("bicycles only.jpg"));
+            int pedestrianY = 560;
+            boolean[] fail = new boolean[6];  
+            for(int h = 0; h < 6; h++) {
+                fail[h] = false;
+            }
+            
+            /* 
+            code for changing size of image from https://stackoverflow.com/questions/5895829/resizing-image-in-java
+            */
+            sign1 = sign1.getScaledInstance(80, 80, sign1.SCALE_DEFAULT);
+            sign2 = sign2.getScaledInstance(80, 80, sign2.SCALE_DEFAULT);
+            sign3 = sign3.getScaledInstance(80, 80, sign3.SCALE_DEFAULT);
+            sign4 = sign4.getScaledInstance(80, 80, sign4.SCALE_DEFAULT);
+            sign5 = sign5.getScaledInstance(80, 80, sign5.SCALE_DEFAULT);
+            sign6 = sign6.getScaledInstance(80, 80, sign6.SCALE_DEFAULT);
             c.drawImage(road, 0, 0, null);
             
             Input i = new Input(c);
@@ -241,14 +261,15 @@ public class Game {
             while(true) {
                 //if times up
                 if (t.timeOver()) break;
-                
                 char ch = i.getChar();
+                eraseCrosswalkArea(950+x);
+                
                 if (ch == 'd' || ch == 'D') {
                     c.drawImage(road, x % 1024 - 1024, 0, null);
                     c.drawImage(road, x % 1024, 0, null);
                     c.drawImage(road, x%1024 + 1024, 0, null);
                     drawBike(1);
-                    x -= 5;
+                    x -= 10;
                 }
                 else if (ch == 'a' || ch == 'D') {
                     c.drawImage(road, x % 1024 - 1024, 0, null);
@@ -262,6 +283,33 @@ public class Game {
                 }
                 i.setChar('p'); 
                 
+                //each sign starts at 750, decreases as x decreases
+                if( x <= -5120) {
+                    c.drawImage(sign6, 1024+x+5120, 680, null); 
+                }
+                else if(x <= -4096) c.drawImage(sign5, 1024+x+4096, 680, null);
+                else if(x <= -3072) c.drawImage(sign4, 1024+x+3072, 680, null);
+                else if(x <= -2048) c.drawImage(sign3, 1024+x+2048, 680, null);
+                
+                else if(x <= -1024) {
+                    c.drawImage(sign2, 1024+x+1024, 680, null);
+                    drawCrosswalk(1024+x+1024, 719);
+                }
+                
+                //if the user is between 0 and 1024, draws the crosswalk and pedestrians when they
+                //get close enough. if they get too close to the pedestrians, they fail the question
+                //because they clearly didn't heed the watch for pedestrians sign
+                else if(x <= 0) {
+                    c.drawImage(sign1, 930+x, 680, null);
+                    drawCrosswalk(950+x); 
+                    if(checkTime >= 500 && x <= -200) { 
+                        drawPedestrians(950+x, pedestrianY); 
+                        pedestrianY -= 1; 
+                        if( x <= -360 && pedestrianY >= 350) fail[0] = true;
+                    }
+                    
+                }
+                   
                 t.timer(); 
                 try {Thread.sleep(50);} catch(Exception e) {}
                 checkTime += 50; 
@@ -269,23 +317,25 @@ public class Game {
                 
             }     
             i.stop();
+            for(int j = 0; j < 6; j++) {
+                if(!fail[j]) correct++;
+            }
             c.drawImage(end, 0, 0, null);
             c.getChar(); 
         }
         catch(IOException e) {}
-
     }
     
     //shows user their score and time elapsed, saves their username 
     //made by: Fei
     public void saveUser() {
-
         try {
             Image results = ImageIO.read(new File("results.jpg"));
             c.drawImage(results, 0, 0, null);
             c.setFont(new Font("Arial", 0, 54));
             String userScore;
-
+            c.setColor(Color.black); 
+            
             if (correct == 0) userScore = "0000";
             else userScore = (1000 * correct - (checkTime - 300) / 10) + "";
             String timeTaken = checkTime + "";
