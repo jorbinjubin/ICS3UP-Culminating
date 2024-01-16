@@ -58,22 +58,22 @@ public class Game {
     
     //draws the bicycle 
     //made by: Fei  
-    public void drawBike(int direction) {
+    public void drawBike(int direction, int y) {
         try {
             if(direction == 1) {
                 Image cycleRight = ImageIO.read(new File("cycleRight2.jpg"));
                 cycleRight = cycleRight.getScaledInstance(100, 50, cycleRight.SCALE_DEFAULT);
-                c.drawImage(cycleRight, 500, 520, null);
+                c.drawImage(cycleRight, 500, 520 + y, null);
             } 
             if(direction == 2) {
                 Image cycleUp = ImageIO.read(new File("cycleUp2.jpg"));
                 cycleUp = cycleUp.getScaledInstance(50, 100, cycleUp.SCALE_DEFAULT);
-                c.drawImage(cycleUp, 500, 520, null);
+                c.drawImage(cycleUp, 500, 520 + y, null);
             } 
             if(direction == 3) {
                 Image cycleDown = ImageIO.read(new File("cycleDown2.jpg"));
                 cycleDown = cycleDown.getScaledInstance(50, 100, cycleDown.SCALE_DEFAULT);
-                c.drawImage(cycleDown, 500, 520, null);
+                c.drawImage(cycleDown, 500, 520 + y, null);
             } 
         } catch (IOException ioe) {}
     }
@@ -258,7 +258,7 @@ public class Game {
             Timer t = new Timer(c);
 
             i.start();
-            
+            int bikeY = 0; 
             while(true) {
                 //if times up
                 if (t.timeOver()) break;
@@ -269,20 +269,34 @@ public class Game {
                     c.drawImage(road, x % 1024 - 1024, 0, null);
                     c.drawImage(road, x % 1024, 0, null);
                     c.drawImage(road, x%1024 + 1024, 0, null);
-                    drawBike(1);
+                    drawBike(1, bikeY);
                     x -= 10;
                 }
                 else if (ch == 'a' || ch == 'D') {
                     c.drawImage(road, x % 1024 - 1024, 0, null);
                     c.drawImage(road, x % 1024, 0, null);
                     c.drawImage(road, x%1024 + 1024, 0, null);
-                    drawBike(1);
+                    drawBike(1, bikeY);
                     x += 1;
+                }
+                else if(ch == 'w' || ch == 'W') {
+                    c.drawImage(road, x % 1024 - 1024, 0, null);
+                    c.drawImage(road, x % 1024, 0, null);
+                    c.drawImage(road, x%1024 + 1024, 0, null);
+                    bikeY-=3;
+                    drawBike(2, bikeY);
+                }
+                else if(ch == 's' || ch == 'S') {
+                    c.drawImage(road, x % 1024 - 1024, 0, null);
+                    c.drawImage(road, x % 1024, 0, null);
+                    c.drawImage(road, x%1024 + 1024, 0, null);
+                    bikeY+=3;
+                    drawBike(3, bikeY);
                 }
                 else if (ch == '\n') {
                     break;
                 }
-                i.setChar('p'); 
+                i.setChar((char)0); //setting to null character (ASCII \0x0000) Source: https://www.asciitable.com/
                 
                 //each sign starts at 750, decreases as x decreases
                 if( x <= -5120) {
@@ -296,7 +310,16 @@ public class Game {
                 else if(x <= -2048) c.drawImage(sign3, 1024+x+2048, 680, null);
                 
                 else if(x <= -1024) {
-                    c.drawImage(sign2, 1024+x+1024, 680, null);
+                    c.drawImage(sign2, 2048+x, 680, null);
+                    c.setColor(new Color(105, 105, 105));
+                    c.fillRect(2148 + x, 600, 400, 200);
+                    if(x < -1500 && x > -1900) {
+                        if(bikeY > 20) {//insert fail condition here for array
+                            new Message("You went into the turn", "Fail");
+                            bikeY = 0; 
+                            drawBike(1, bikeY);
+                        }
+                    }
                     
                 }
                 
@@ -371,17 +394,15 @@ public class Game {
                     ch = c.getChar();
                 }
 
-                while (ch == '\n' && username.length() < 1) {
+                if (ch == '\n' && username.length() < 1) {
                     new Message("Username too short!", "Error!");
-                    ch = c.getChar();
+                    continue
                 }
 
-                while (username.length() == 20) {
+                if(username.length() == 20) {
                     new Message("Username has reached maximum length.", "Error!");
-                    ch = c.getChar();
                 }
-
-                if (ch != 8 && ch != '\n') username += ch;
+                else if (ch != 8 && ch != '\n') username += ch;
                 c.setColor(new Color(255, 177, 121));
                 c.fillRect(500, 420, 350, 100);
                 c.setColor(Color.black);
