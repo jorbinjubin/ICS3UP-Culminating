@@ -10,8 +10,7 @@
 import hsa.Console;
 
 public class Input extends Thread {
-    /* Variable Declaration
-     */
+    //Variable Declaration
     private char ch;
     private Console c;
     

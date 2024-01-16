@@ -58,22 +58,22 @@ public class Game {
     
     //draws the bicycle 
     //made by: Fei  
-    public void drawBike(int direction) {
+    public void drawBike(int direction, int y) {
 	try {
 	    if(direction == 1) {
 		Image cycleRight = ImageIO.read(new File("cycleRight2.jpg"));
 		cycleRight = cycleRight.getScaledInstance(100, 50, cycleRight.SCALE_DEFAULT);
-		c.drawImage(cycleRight, 500, 520, null);
+		c.drawImage(cycleRight, 500, 520 + y, null);
 	    } 
 	    if(direction == 2) {
 		Image cycleUp = ImageIO.read(new File("cycleUp2.jpg"));
 		cycleUp = cycleUp.getScaledInstance(50, 100, cycleUp.SCALE_DEFAULT);
-		c.drawImage(cycleUp, 500, 520, null);
+		c.drawImage(cycleUp, 500, 520 + y, null);
 	    } 
 	    if(direction == 3) {
 		Image cycleDown = ImageIO.read(new File("cycleDown2.jpg"));
 		cycleDown = cycleDown.getScaledInstance(50, 100, cycleDown.SCALE_DEFAULT);
-		c.drawImage(cycleDown, 500, 520, null);
+		c.drawImage(cycleDown, 500, 520 + y, null);
 	    } 
 	} catch (IOException ioe) {}
     }
@@ -176,46 +176,105 @@ public class Game {
     }
 
     //animation for bicycle on the road 
-    //made by: Justin and Fei
+    //made by: Fei and Justin
     public void game() {
+      
 	int x = 0;
 	try { 
 	    Image road = ImageIO.read(new File("Road.jpg"));
 	    Image end = ImageIO.read(new File("sadBlahaj.jpg")); 
+	    Image sign1 = ImageIO.read(new File("warning pedestrians.jpg"));
+	    Image sign2 = ImageIO.read(new File("no right turns.jpg"));
+	    Image sign3 = ImageIO.read(new File("no bicycles allowed.jpg"));
+	    Image sign4 = ImageIO.read(new File("yield.jpg"));
+	    Image sign5 = ImageIO.read(new File("do not enter.jpg"));
+	    Image sign6 = ImageIO.read(new File("bicycles only.jpg"));
+	    Image crosswalk = ImageIO.read(new File("crosswalk.jpg")); 
+	    
+	    /* 
+	    code for changing size of image from https://stackoverflow.com/questions/5895829/resizing-image-in-java
+	    */
+	    sign1 = sign1.getScaledInstance(80, 80, sign1.SCALE_DEFAULT);
+	    sign2 = sign2.getScaledInstance(80, 80, sign2.SCALE_DEFAULT);
+	    sign3 = sign3.getScaledInstance(80, 80, sign3.SCALE_DEFAULT);
+	    sign4 = sign4.getScaledInstance(80, 80, sign4.SCALE_DEFAULT);
+	    sign5 = sign5.getScaledInstance(80, 80, sign5.SCALE_DEFAULT);
+	    sign6 = sign6.getScaledInstance(80, 80, sign6.SCALE_DEFAULT);
+	    crosswalk = crosswalk.getScaledInstance(300, 454, crosswalk.SCALE_DEFAULT);
 	    c.drawImage(road, 0, 0, null);
 	    
 	    Input i = new Input(c);
 	    Timer t = new Timer(c);
 
 	    i.start();
-	    
+	    int bikeY = 0;
 	    while(true) {
 		//if times up
 		if (t.timeOver()) break;
-		
 		char ch = i.getChar();
 		if (ch == 'd' || ch == 'D') {
 		    c.drawImage(road, x % 1024 - 1024, 0, null);
 		    c.drawImage(road, x % 1024, 0, null);
 		    c.drawImage(road, x%1024 + 1024, 0, null);
-		    drawBike(1);
-		    x -= 5;
+		    drawBike(1, bikeY);
+		    x -= 10;
 		}
 		else if (ch == 'a' || ch == 'D') {
 		    c.drawImage(road, x % 1024 - 1024, 0, null);
 		    c.drawImage(road, x % 1024, 0, null);
 		    c.drawImage(road, x%1024 + 1024, 0, null);
-		    drawBike(1);
+		    drawBike(1, bikeY);
 		    x += 1;
+		}
+		else if(ch == 'w' || ch == 'W') {
+		    c.drawImage(road, x % 1024 - 1024, 0, null);
+		    c.drawImage(road, x % 1024, 0, null);
+		    c.drawImage(road, x%1024 + 1024, 0, null);
+		    bikeY-=3;
+		    drawBike(2, bikeY);
+		}
+		else if(ch == 's' || ch == 'S') {
+		    c.drawImage(road, x % 1024 - 1024, 0, null);
+		    c.drawImage(road, x % 1024, 0, null);
+		    c.drawImage(road, x%1024 + 1024, 0, null);
+		    bikeY+=3;
+		    drawBike(3, bikeY);
 		}
 		else if (ch == '\n') {
 		    break;
 		}
-		i.setChar('p'); 
+		i.setChar((char)0); //setting to null character (ASCII \0x0000) Source: https://www.asciitable.com/
 		
+		//each sign starts at 750, decreases as x decreases
+		if( x <= -5120) {
+		    c.drawImage(sign6, 1024+x+5120, 680, null); 
+		}
+		
+		else if(x <= -4096) c.drawImage(sign5, 1024+x+4096, 680, null);
+		else if(x <= -3072) c.drawImage(sign4, 1024+x+3072, 680, null);
+		else if(x <= -2048) c.drawImage(sign3, 1024+x+2048, 680, null);
+		else if(x <= -1024) {
+		    c.drawImage(sign2, 2048+x, 680, null);
+		    c.setColor(new Color(105, 105, 105));
+		    c.fillRect(2148 + x, 600, 400, 200);
+		    if(x < -1500 && x > -1900) {
+			if(bikeY > 20) {//insert fail condition here for array
+			    new Message("You went into the turn", "Fail");
+			    bikeY = 0; 
+			    drawBike(1, bikeY);
+			}
+		    }
+		    
+		}
+		else if(x <= 0) {
+		    c.drawImage(sign1, 1024+x, 680, null);
+		    c.drawImage(crosswalk, 1024+x+5120+60, 680, null); 
+		}
+		    
 		t.timer(); 
-		try {Thread.sleep(30);} catch(Exception e) {}
-		checkTime += 30; 
+		System.out.println(x + " " + bikeY);
+		try {Thread.sleep(50);} catch(Exception e) {}
+		checkTime += 50; 
 		if(checkTime%1000 == 0) t.time--;
 		
 	    }     
@@ -304,7 +363,9 @@ public class Game {
     }
 
     public void run() {
+	//house();
 	game();
+	saveUser();
 	saveUser();
     }
  
