@@ -36,46 +36,46 @@ public class Game {
     
     //constructor
     public Game(Console con) {
-	c = con;
+        c = con;
     }
     
     //convenience function for pausing the program for a specified amount of time
     //made by: Justin
     public void delay(int ms) {
-	try {
-	    Thread.sleep(ms);
-	} catch (Exception e) {}
+        try {
+            Thread.sleep(ms);
+        } catch (Exception e) {}
     }
     
     //'fancily' prints a string one character at a time
     //made by: Justin
     public void fancyprint(String s1, int x, int y, int speed) {
-	for (int i = 0; i <= s1.length(); i++) {
-	    c.drawString(s1.substring(0, i), x, y);
-	    delay(speed);
-	}
+        for (int i = 0; i <= s1.length(); i++) {
+            c.drawString(s1.substring(0, i), x, y);
+            delay(speed);
+        }
     }
     
     //draws the bicycle 
     //made by: Fei  
     public void drawBike(int direction) {
-	try {
-	    if(direction == 1) {
-		Image cycleRight = ImageIO.read(new File("cycleRight2.jpg"));
-		cycleRight = cycleRight.getScaledInstance(100, 50, cycleRight.SCALE_DEFAULT);
-		c.drawImage(cycleRight, 500, 520, null);
-	    } 
-	    if(direction == 2) {
-		Image cycleUp = ImageIO.read(new File("cycleUp2.jpg"));
-		cycleUp = cycleUp.getScaledInstance(50, 100, cycleUp.SCALE_DEFAULT);
-		c.drawImage(cycleUp, 500, 520, null);
-	    } 
-	    if(direction == 3) {
-		Image cycleDown = ImageIO.read(new File("cycleDown2.jpg"));
-		cycleDown = cycleDown.getScaledInstance(50, 100, cycleDown.SCALE_DEFAULT);
-		c.drawImage(cycleDown, 500, 520, null);
-	    } 
-	} catch (IOException ioe) {}
+        try {
+            if(direction == 1) {
+                Image cycleRight = ImageIO.read(new File("cycleRight2.jpg"));
+                cycleRight = cycleRight.getScaledInstance(100, 50, cycleRight.SCALE_DEFAULT);
+                c.drawImage(cycleRight, 500, 520, null);
+            } 
+            if(direction == 2) {
+                Image cycleUp = ImageIO.read(new File("cycleUp2.jpg"));
+                cycleUp = cycleUp.getScaledInstance(50, 100, cycleUp.SCALE_DEFAULT);
+                c.drawImage(cycleUp, 500, 520, null);
+            } 
+            if(direction == 3) {
+                Image cycleDown = ImageIO.read(new File("cycleDown2.jpg"));
+                cycleDown = cycleDown.getScaledInstance(50, 100, cycleDown.SCALE_DEFAULT);
+                c.drawImage(cycleDown, 500, 520, null);
+            } 
+        } catch (IOException ioe) {}
     }
     
     //draws a white crosswalk for pedestrians
@@ -128,282 +128,235 @@ public class Game {
     //Variables: 
     // Image houseDoor - image of the house background and the door 
     public void house() {
-	Image houseDoor;
-	c.setColor(new Color(91, 46, 13));
-	c.fillRect(0, 0, 1024, 760);
-	try {
-	    houseDoor = ImageIO.read(new File("houseq1.jpg"));
-	    c.drawImage(houseDoor, 0, 0, null);
-	} catch (FileNotFoundException fnf) {
-	    new Message("Image file not found", "Error!");
-	} catch (IOException ioe) {
-	    new Message("File Error", "Error!");
-	} catch (Exception e) {
-	    new Message("Unknown Error", "Error!");
-	}
+        Image houseDoor;
+        c.setColor(new Color(91, 46, 13));
+        c.fillRect(0, 0, 1024, 760);
+        try {
+            houseDoor = ImageIO.read(new File("houseq1.jpg"));
+            c.drawImage(houseDoor, 0, 0, null);
+        } catch (FileNotFoundException fnf) {
+            new Message("Image file not found", "Error!");
+        } catch (IOException ioe) {
+            new Message("File Error", "Error!");
+        } catch (Exception e) {
+            new Message("Unknown Error", "Error!");
+        }
 
-	c.setColor(new Color(91, 46, 13));
-	c.fillRect(0, 0, 1024, 60);
-	Font f = new Font("Consolas", 0, 30);
-	c.setFont(f);
-	c.setColor(new Color(255, 20, 20));
-	fancyprint("Press any key to continue...", 280, 40, 20);
+        c.setColor(new Color(91, 46, 13));
+        c.fillRect(0, 0, 1024, 60);
+        Font f = new Font("Consolas", 0, 30);
+        c.setFont(f);
+        c.setColor(new Color(255, 20, 20));
+        fancyprint("Press any key to continue...", 280, 40, 20);
 
-	c.getChar();
-	c.setColor(new Color(91, 46, 13));
-	c.fillRect(0, 0, 1024, 760);
+        c.getChar();
+        c.setColor(new Color(91, 46, 13));
+        c.fillRect(0, 0, 1024, 760);
 
-	try {
-	    Image houseQuestion = ImageIO.read(new File("selected0.jpg"));
-	    c.drawImage(houseQuestion, 0, 0, null);
-	} catch (FileNotFoundException fnf) {
-	    new Message("Image file not found", "Error!");
-	} catch (IOException ioe) {
-	    new Message("File Error", "Error!");
-	} catch (Exception e) {
-	    new Message("Unknown Error", "Error!");
-	}
+        try {
+            Image houseQuestion = ImageIO.read(new File("selected0.jpg"));
+            c.drawImage(houseQuestion, 0, 0, null);
+        } catch (FileNotFoundException fnf) {
+            new Message("Image file not found", "Error!");
+        } catch (IOException ioe) {
+            new Message("File Error", "Error!");
+        } catch (Exception e) {
+            new Message("Unknown Error", "Error!");
+        }
 
-	c.setColor(Color.red);
-	int choice = 0;
-	int chosens = 0;
-	int[] chosen = new int[3];
+        c.setColor(Color.red);
+        int choice = 0;
+        int chosens = 0;
+        int[] chosen = new int[3];
 
-	Image[] images = new Image[7];
-	try { //preloading images into an array
-	    for (int i = 0; i < 7; i++) {
-		images[i] = ImageIO.read(new File("selected" + i + ".jpg"));
-	    }
-	} catch (FileNotFoundException fnf) {
-	    new Message("Image file not found", "Error!");
-	} catch (IOException ioe) {
-	    new Message("File Error", "Error!");
-	} catch (Exception e) {
-	    new Message("Unknown Error", "Error!");
-	}
+        Image[] images = new Image[7];
+        try { //preloading images into an array
+            for (int i = 0; i < 7; i++) {
+                images[i] = ImageIO.read(new File("selected" + i + ".jpg"));
+            }
+        } catch (FileNotFoundException fnf) {
+            new Message("Image file not found", "Error!");
+        } catch (IOException ioe) {
+            new Message("File Error", "Error!");
+        } catch (Exception e) {
+            new Message("Unknown Error", "Error!");
+        }
 
-	while (chosens < 3) {
-	    if (c.isCharAvail()) {
-		switch (c.getChar()) {
-		case 'a':
-		case 'h':
-		    if (choice > 0) choice--;
-		    break;
-		case 'd':
-		case 'l':
-		    if (choice < 6) choice++;
-		    break;
-		default:
-		    break;
-		case '\n':
-		    chosen[chosens] = choice;
-		    chosens++;
-		    if(choice == 0) correct++; 
-		    break;
-		}
-		c.drawImage(images[choice], 0, 0, null);
-	    }
-	}
-	c.clear();
-	try {
-	    Image houseimage = ImageIO.read(new File("houseq1.jpg"));
-	    c.drawImage(houseimage, 0, 0, null);
-	} catch (FileNotFoundException fnf) {
-	    new Message("Image file not found", "Error!");
-	} catch (IOException ioe) {
-	    new Message("File Error", "Error!");
-	} catch (Exception e) {
-	    new Message("Unknown Error", "Error!");
-	}
-	c.setColor(new Color(189,224,254));
-	c.fillRect(0, 0, 1024, 1000);
-	
-	c.setColor(Color.black);
-	fancyprint("Alright, now we're ready to go", 270, 360, 20);
-	fancyprint("Press any key to continue...", 280, 405, 20);
+        while (chosens < 3) {
+            if (c.isCharAvail()) {
+                switch (c.getChar()) {
+                case 'a':
+                case 'h':
+                    if (choice > 0) choice--;
+                    break;
+                case 'd':
+                case 'l':
+                    if (choice < 6) choice++;
+                    break;
+                default:
+                    break;
+                case '\n':
+                    chosen[chosens] = choice;
+                    chosens++;
+                    if(choice == 0) correct++; 
+                    break;
+                }
+                c.drawImage(images[choice], 0, 0, null);
+            }
+        }
+        c.clear();
+        try {
+            Image houseimage = ImageIO.read(new File("houseq1.jpg"));
+            c.drawImage(houseimage, 0, 0, null);
+        } catch (FileNotFoundException fnf) {
+            new Message("Image file not found", "Error!");
+        } catch (IOException ioe) {
+            new Message("File Error", "Error!");
+        } catch (Exception e) {
+            new Message("Unknown Error", "Error!");
+        }
+        c.setColor(new Color(189,224,254));
+        c.fillRect(0, 0, 1024, 1000);
+        
+        c.setColor(Color.black);
+        fancyprint("Alright, now we're ready to go", 270, 360, 20);
+        fancyprint("Press any key to continue...", 280, 405, 20);
     }
 
     //animation for bicycle on the road 
     //made by: Fei and Justin
     public void game() {
-	int x = 0;
-	try { 
-	    Image road = ImageIO.read(new File("Road.jpg"));
-	    Image end = ImageIO.read(new File("sadBlahaj.jpg")); 
-	    Image sign1 = ImageIO.read(new File("warning pedestrians.jpg"));
-	    Image sign2 = ImageIO.read(new File("no right turns.jpg"));
-	    Image sign3 = ImageIO.read(new File("do not enter .jpg"));
-	    Image sign4 = ImageIO.read(new File("yield.jpg"));
-	    Image sign5 = ImageIO.read(new File("no bicycles allowed.jpg"));
-	    Image sign6 = ImageIO.read(new File("bicycles only.jpg"));
-	    int pedestrianY = 560;
-	    boolean[] fail = new boolean[6];  
-	    
-	    /* 
-	    code for changing size of image from https://stackoverflow.com/questions/5895829/resizing-image-in-java
-	    */
-	    sign1 = sign1.getScaledInstance(80, 80, sign1.SCALE_DEFAULT);
-	    sign2 = sign2.getScaledInstance(80, 80, sign2.SCALE_DEFAULT);
-	    sign3 = sign3.getScaledInstance(80, 80, sign3.SCALE_DEFAULT);
-	    sign4 = sign4.getScaledInstance(80, 80, sign4.SCALE_DEFAULT);
-	    sign5 = sign5.getScaledInstance(80, 80, sign5.SCALE_DEFAULT);
-	    sign6 = sign6.getScaledInstance(80, 80, sign6.SCALE_DEFAULT);
-	    c.drawImage(road, 0, 0, null);
-	    
-	    Input i = new Input(c);
-	    Timer t = new Timer(c);
 
-	    i.start();
-	    
-	    while(true) {
-		//if times up
-		if (t.timeOver()) break;
-		char ch = i.getChar();
-		eraseCrosswalkArea(950+x);
-		
-		if (ch == 'd' || ch == 'D') {
-		    c.drawImage(road, x % 1024 - 1024, 0, null);
-		    c.drawImage(road, x % 1024, 0, null);
-		    c.drawImage(road, x%1024 + 1024, 0, null);
-		    drawBike(1);
-		    x -= 10;
-		}
-		else if (ch == 'a' || ch == 'D') {
-		    c.drawImage(road, x % 1024 - 1024, 0, null);
-		    c.drawImage(road, x % 1024, 0, null);
-		    c.drawImage(road, x%1024 + 1024, 0, null);
-		    drawBike(1);
-		    x += 1;
-		}
-		else if (ch == '\n') {
-		    break;
-		}
-		i.setChar('p'); 
-		
-		//each sign starts at 750, decreases as x decreases
-		if( x <= -5120) {
-		    c.drawImage(sign6, 1024+x+5120, 680, null); 
-		}
-		else if(x <= -4096) c.drawImage(sign5, 1024+x+4096, 680, null);
-		else if(x <= -3072) c.drawImage(sign4, 1024+x+3072, 680, null);
-		else if(x <= -2048) c.drawImage(sign3, 1024+x+2048, 680, null);
-		
-		else if(x <= -1024) {
-		    c.drawImage(sign2, 1024+x+1024, 680, null);
-		    drawCrosswalk(1024+x+1024, 719);
-		}
-		
-		//if the user is between 0 and 1024, draws the crosswalk and pedestrians when they
-		//get close enough. if they get too close to the pedestrians, they fail the question
-		//because they clearly didn't heed the watch for pedestrians sign
-		else if(x <= 0) {
-		    c.drawImage(sign1, 930+x, 680, null);
-		    drawCrosswalk(950+x); 
-		    if(checkTime >= 500 && x <= -200) { 
-			drawPedestrians(950+x, pedestrianY); 
-			pedestrianY -= 1; 
-			if( x <= -360 && pedestrianY >= 350) fail[0] = true;
-		    }
-		    
-		}
-		   
-		t.timer(); 
-		try {Thread.sleep(50);} catch(Exception e) {}
-		checkTime += 50; 
-		if(checkTime%1000 == 0) t.time--;
-		
-	    }     
-	    i.stop();
-	    for(int j = 0; j < 6; j++) {
-		if(!fail[j]) correct++;
-	    }
-	    c.drawImage(end, 0, 0, null);
-	    c.getChar(); 
-	}
-	catch(IOException e) {}
+        int x = 0;
+        try { 
+            Image road = ImageIO.read(new File("Road.jpg"));
+            Image end = ImageIO.read(new File("sadBlahaj.jpg")); 
+            c.drawImage(road, 0, 0, null);
+            
+            Input i = new Input(c);
+            Timer t = new Timer(c);
+
+            i.start();
+            
+            while(true) {
+                //if times up
+                if (t.timeOver()) break;
+                
+                char ch = i.getChar();
+                if (ch == 'd' || ch == 'D') {
+                    c.drawImage(road, x % 1024 - 1024, 0, null);
+                    c.drawImage(road, x % 1024, 0, null);
+                    c.drawImage(road, x%1024 + 1024, 0, null);
+                    drawBike(1);
+                    x -= 5;
+                }
+                else if (ch == 'a' || ch == 'D') {
+                    c.drawImage(road, x % 1024 - 1024, 0, null);
+                    c.drawImage(road, x % 1024, 0, null);
+                    c.drawImage(road, x%1024 + 1024, 0, null);
+                    drawBike(1);
+                    x += 1;
+                }
+                else if (ch == '\n') {
+                    break;
+                }
+                i.setChar('p'); 
+                
+                t.timer(); 
+                try {Thread.sleep(50);} catch(Exception e) {}
+                checkTime += 50; 
+                if(checkTime%1000 == 0) t.time--;
+                
+            }     
+            i.stop();
+            c.drawImage(end, 0, 0, null);
+            c.getChar(); 
+        }
+        catch(IOException e) {}
+
     }
     
     //shows user their score and time elapsed, saves their username 
     //made by: Fei
     public void saveUser() {
-	try {
-	    Image results = ImageIO.read(new File("results.jpg"));
-	    c.drawImage(results, 0, 0, null);
-	    c.setFont(new Font("Arial", 0, 54));
-	    String userScore;
-	    c.setColor(Color.black); 
-	    
-	    if (correct == 0) userScore = "0000";
-	    else userScore = (1000 * correct - (checkTime - 300) / 10) + "";
-	    String timeTaken = checkTime + "";
 
-	    c.drawString(userScore, 580, 300);
-	    c.drawString(timeTaken, 640, 395);
+        try {
+            Image results = ImageIO.read(new File("results.jpg"));
+            c.drawImage(results, 0, 0, null);
+            c.setFont(new Font("Arial", 0, 54));
+            String userScore;
 
-	    c.setFont(new Font("Arial", 0, 32));
+            if (correct == 0) userScore = "0000";
+            else userScore = (1000 * correct - (checkTime - 300) / 10) + "";
+            String timeTaken = checkTime + "";
 
-	    while (true) {
-		char ch = c.getChar();
-		if (ch == '\n' && username.length() >= 1) break;
-		if (ch == 8) {
-		    if (username.length() == 0) {
-			new Message("There are no characters to delete.", "Error");
-			continue;
-		    } else {
-			username = username.substring(0, username.length() - 1);
-			c.setColor(new Color(255, 177, 121));
-			c.fillRect(500, 420, 350, 100);
-			c.setColor(Color.black);
-			c.drawString(username, 500, 478);
-			continue;
-		    }
-		}
+            c.drawString(userScore, 580, 300);
+            c.drawString(timeTaken, 640, 395);
 
-		while (!Character.isLetterOrDigit(ch)) {
-		    new Message("Please use alphanumerical characters.", "Error!");
-		    ch = c.getChar();
-		}
+            c.setFont(new Font("Arial", 0, 32));
 
-		while (ch == '\n' && username.length() < 1) {
-		    new Message("Username too short!", "Error!");
-		    ch = c.getChar();
-		}
+            while (true) {
+                char ch = c.getChar();
+                if (ch == '\n' && username.length() >= 1) break;
+                if (ch == 8) {
+                    if (username.length() == 0) {
+                        new Message("There are no characters to delete.", "Error");
+                        continue;
+                    } else {
+                        username = username.substring(0, username.length() - 1);
+                        c.setColor(new Color(255, 177, 121));
+                        c.fillRect(500, 420, 350, 100);
+                        c.setColor(Color.black);
+                        c.drawString(username, 500, 478);
+                        continue;
+                    }
+                }
 
-		while (username.length() == 20) {
-		    new Message("Username has reached maximum length.", "Error!");
-		    ch = c.getChar();
-		}
+                while (!Character.isLetterOrDigit(ch)) {
+                    new Message("Please use alphanumerical characters.", "Error!");
+                    ch = c.getChar();
+                }
 
-		if (ch != 8 && ch != '\n') username += ch;
-		c.setColor(new Color(255, 177, 121));
-		c.fillRect(500, 420, 350, 100);
-		c.setColor(Color.black);
-		c.drawString(username, 500, 478);
-	    }
+                while (ch == '\n' && username.length() < 1) {
+                    new Message("Username too short!", "Error!");
+                    ch = c.getChar();
+                }
 
-	    saveScore = c.getChar();
-	} catch (FileNotFoundException fnf) {
-	    new Message("File Not Found", "Error!");
-	} catch (IOException ioe) {
-	    new Message("File Error", "Error!");
-	}
+                while (username.length() == 20) {
+                    new Message("Username has reached maximum length.", "Error!");
+                    ch = c.getChar();
+                }
+
+                if (ch != 8 && ch != '\n') username += ch;
+                c.setColor(new Color(255, 177, 121));
+                c.fillRect(500, 420, 350, 100);
+                c.setColor(Color.black);
+                c.drawString(username, 500, 478);
+            }
+
+            saveScore = c.getChar();
+        } catch (FileNotFoundException fnf) {
+            new Message("File Not Found", "Error!");
+        } catch (IOException ioe) {
+            new Message("File Error", "Error!");
+        }
     }
 
     public String getUsername() {
-	return username;
+        return username;
     }
 
     public int getNumCorrect() {
-	return correct;
+        return correct;
     }
 
     public int getTime() {
-	return checkTime;
+        return checkTime;
     }
 
     public void run() {
-	game();
-	saveUser();
+        game();
+        saveUser();
     }
  
 }

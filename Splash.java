@@ -22,7 +22,7 @@ public class Splash {
     
     // constructor 
     public Splash (Console con) {
-	c = con;
+        c = con;
     }
     
     // draws the splash screen
@@ -72,10 +72,11 @@ public class Splash {
 	
 	// pauses the program until the user presses a key
 	c.getChar();
+
     }
     
     // runs drawCycles
     public void run() {
-	drawCycles();
+        drawCycles();
     }
 }

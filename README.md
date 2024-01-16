@@ -12,7 +12,7 @@ This game is not legal/official information, however we, the authors, have tried
 That said, you do not get 3 lives after getting run over by a car.
 
 # HOW TO RUN GAME
-Open "Main.java" in Ready To Program IDE and click `Run` or use the shortcut `Ctrl + R` to run.
+Open "BicycleSafety.java" in Ready To Program IDE and click `Run` or use the shortcut `Ctrl + R` to run.
 # Where do I find Ready to Program?
 [Download](http://compsci.ca/holtsoft/) the Ready 1.7.1 executable and run it.
 
