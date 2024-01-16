@@ -232,7 +232,7 @@ public class Game {
             Image end = ImageIO.read(new File("sadBlahaj.jpg")); 
             Image sign1 = ImageIO.read(new File("warning pedestrians.jpg"));
             Image sign2 = ImageIO.read(new File("no right turns.jpg"));
-            Image sign3 = ImageIO.read(new File("do not enter .jpg"));
+            Image sign3 = ImageIO.read(new File("do not enter.jpg"));
             Image sign4 = ImageIO.read(new File("yield.jpg"));
             Image sign5 = ImageIO.read(new File("no bicycles allowed.jpg"));
             Image sign6 = ImageIO.read(new File("bicycles only.jpg"));
@@ -289,12 +289,15 @@ public class Game {
                     c.drawImage(sign6, 1024+x+5120, 680, null); 
                 }
                 else if(x <= -4096) c.drawImage(sign5, 1024+x+4096, 680, null);
-                else if(x <= -3072) c.drawImage(sign4, 1024+x+3072, 680, null);
+                else if(x <= -3072) { 
+                    c.drawImage(sign4, 1024+x+3072, 680, null);
+                    drawCrosswalk(1024+x+1024, 719);
+                }
                 else if(x <= -2048) c.drawImage(sign3, 1024+x+2048, 680, null);
                 
                 else if(x <= -1024) {
                     c.drawImage(sign2, 1024+x+1024, 680, null);
-                    drawCrosswalk(1024+x+1024, 719);
+                    
                 }
                 
                 //if the user is between 0 and 1024, draws the crosswalk and pedestrians when they
