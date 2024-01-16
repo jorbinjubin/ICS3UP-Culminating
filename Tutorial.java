@@ -180,6 +180,8 @@ public class Tutorial {
 	fancyprint("That's it!", 310, 300, 20);
 	c.setFont(f1);
 	fancyprint("Good luck, have fun", 300, 380, 20);
+	
+	while (c.isCharAvail()) c.getChar();
 	c.setFont(f2);
 	fancyprint("Press any key to return to main menu...", 260, 430, 20);
 	c.getChar();

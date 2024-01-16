@@ -64,7 +64,7 @@ public class Instructions {
 		if(ch == 'A') c.drawImage(A, 100, 450, null);
 		if(ch == 'S') c.drawImage(S, 100, 450, null);
 		if(ch == 'D') c.drawImage(D, 100, 450, null);
-		try { Thread.sleep(200); } catch(Exception e) {} 
+		try { Thread.sleep(100); } catch(Exception e) {} 
 		c.drawImage(WASD, 100, 450, null);
 		ch = c.getChar(); 
 		ch = Character.toUpperCase(ch); 
@@ -86,6 +86,7 @@ public class Instructions {
     * ------------------------------------------------------------------------------------
     */
     public void instruct2() {
+	while (c.isCharAvail()) c.getChar();
 	try { 
 	    BufferedImage instruct2 = ImageIO.read (new File("learning.jpg"));
 	    c.drawImage(instruct2, 0, 0, null);   
@@ -107,6 +108,7 @@ public class Instructions {
     * ------------------------------------------------------------------------------------
     */
     public void instruct3() {
+	while (c.isCharAvail()) c.getChar();
 	try { 
 	    BufferedImage instruct3 = ImageIO.read (new File("testing.jpg"));
 	    c.drawImage(instruct3, 0, 0, null);   

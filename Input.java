@@ -1,17 +1,24 @@
 /* 
- * Takes user input without pausing the timer in game class 
- * Tsz Fei Wang
- * Teacher: Ms. Krasteva
- * January 14th, 2023
- * 
- * Suggestion and idea from Eric Ning
- */
+* Input class for Bicycle Safety Game
+* Takes user input without pausing the timer in game class 
+* 2024-01-14
+* Tsz Fei Wang
+* ICS3UP
+* 
+* Suggestion and idea from Eric Ning
+*/
  
 import hsa.Console;
 
 public class Input extends Thread {
-    /* Variable Declaration
-     */
+    /* 
+    * Variable Declaration
+    * -------------------------------------------------------------------------------------------
+    * Type             | Name          | Description
+    * private char     | ch            | stores character the user inputted
+    * private Console  | c             | allows console to be used
+    * -------------------------------------------------------------------------------------------
+    */
     private char ch;
     private Console c;
     
